@@ -4,6 +4,10 @@ It will merge all 3rd party extensions menu items in backend's primary menu to a
 
 to a single tab named "**Extensions**" and place it after native Magento tabs.
 
+#Comparision - admin before this extension and after
+
+![Before and after comparision](https://raw.githubusercontent.com/redchamps/repo-images/master/before-after.gif)
+
 ## Installation
 
 > composer require redchamps/module-clean-admin-menu
