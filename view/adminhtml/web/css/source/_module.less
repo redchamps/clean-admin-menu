@@ -1,0 +1,93 @@
+#menu-redchamps-cleanmenu-extensions {
+  .submenu {
+    .level-0 {
+      >a {
+        &:before {
+          content: '';
+          display: none;
+        }
+        display: block;
+        width: 99%;
+        min-height: 0;
+        margin: .7rem 0;
+        padding: 1.25rem 1rem 1.25rem 3rem;
+        font-weight: 600;
+        font-size: 1.6rem;
+        text-align: left;
+        color: #a79d95;
+        text-transform: none;
+        &:hover {
+          background-color: #524d49;
+        }
+      }
+    }
+    .column {
+      .parent {
+        margin-bottom: 0;
+      }
+    }
+    .parent {
+      margin-bottom: 0.5rem;
+    }
+  }
+  .level-0 {
+    &:first-child {
+      >a {
+        &:after {
+          content: '';
+          display: none;
+        }
+      }
+    }
+  }
+  .item-container {
+    .submenu {
+      transform: none;
+      opacity: 0;
+      transition-property: opacity;
+    }
+  }
+  .item-container._show {
+    .submenu {
+      opacity: 1;
+    }
+  }
+  >a {
+    &:before {
+      content: '\e612';
+    }
+  }
+}
+.admin__menu {
+  .submenu {
+    .column {
+      &:only-of-type {
+        .submenu-group-title {
+          display: block !important;
+        }
+      }
+    }
+    .submenu {
+      .submenu-title {
+        height: 60px;
+      }
+    }
+  }
+  .level-0 {
+    >.submenu {
+      .submenu {
+        width: auto !important;
+      }
+    }
+  }
+}
+.rc-section-title {
+  strong {
+    color: #ec5102;
+    padding: 0 0 6px 8px !important;
+  }
+  margin: 15px 0;
+}
+.rc-section-title._active {
+  border: none;
+}
