@@ -8,10 +8,12 @@ class MenuBuilderCommand extends Base
 {
     public function afterExecute(AbstractCommand $subject, $result)
     {
-        $moduleName = $result["module"];
-        $parentId = isset($result["parent"]) ? $result["parent"] : null;
-        if ($parentId == null && strpos($moduleName, "Magento_") !== 0 && $moduleName != "RedChamps_CleanMenu") {
-            $result["parent"] = self::MENU_ID;
+        if (isset($result["module"])) {
+            $moduleName = $result["module"];
+            $parentId = isset($result["parent"]) ? $result["parent"] : null;
+            if ($parentId == null && strpos($moduleName, "Magento_") !== 0 && $moduleName != "RedChamps_CleanMenu") {
+                $result["parent"] = self::MENU_ID;
+            }
         }
         return $result;
     }
