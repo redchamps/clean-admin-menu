@@ -10,7 +10,7 @@ final class Config
 {
     public const MENU_ID = 'RedChamps_CleanMenu::extensions';
 
-    private const CONFIG_PATH_RESTRICTED_MODULES = 'extensions_list_settings/general/restricted_modules';
+    private const CONFIG_PATH_ALLOWED_MODULES = 'extensions_list_settings/general/allowed_modules';
 
     /**
      * @var ScopeConfigInterface
@@ -20,7 +20,7 @@ final class Config
     /**
      * @var string[]
      */
-    private $restrictedModules;
+    private $allowedModules;
 
     public function __construct(
         ScopeConfigInterface $scopeConfig
@@ -28,12 +28,12 @@ final class Config
         $this->scopeConfig = $scopeConfig;
     }
 
-    public function getRestrictedModules(): array
+    public function getAllowedModules(): array
     {
-        return $this->restrictedModules
-            ?? $this->restrictedModules = explode(
+        return $this->allowedModules
+            ?? $this->allowedModules = explode(
                 ',',
-                $this->scopeConfig->getValue(self::CONFIG_PATH_RESTRICTED_MODULES) ?? ''
+                $this->scopeConfig->getValue(self::CONFIG_PATH_ALLOWED_MODULES) ?? ''
             );
     }
 }

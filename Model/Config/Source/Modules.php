@@ -3,24 +3,15 @@ declare(strict_types=1);
 
 namespace RedChamps\CleanMenu\Model\Config\Source;
 
-use Magento\Framework\Component\ComponentRegistrar;
-use Magento\Framework\Component\ComponentRegistrarInterface;
 use Magento\Framework\Data\OptionSourceInterface;
-use function array_filter;
-use function array_keys;
-use function strlen;
-use function strncmp;
-use const ARRAY_FILTER_USE_KEY;
+use RedChamps\CleanMenu\Model\CustomModuleList;
 
 final class Modules implements OptionSourceInterface
 {
-    private const MAGENTO_MODULE_PREFIX = 'Magento_';
-    private const MODULE_NAME = 'RedChamps_CleanMenu';
-
     /**
-     * @var ComponentRegistrarInterface
+     * @var CustomModuleList
      */
-    private $componentRegistrar;
+    private $customModuleList;
 
     /**
      * @var string[][]
@@ -28,9 +19,9 @@ final class Modules implements OptionSourceInterface
     private $options;
 
     public function __construct(
-        ComponentRegistrarInterface $componentRegistrar
+        CustomModuleList $customModuleList
     ) {
-        $this->componentRegistrar = $componentRegistrar;
+        $this->customModuleList = $customModuleList;
     }
 
     public function toOptionArray(): array
@@ -42,22 +33,10 @@ final class Modules implements OptionSourceInterface
     {
         $options = [];
 
-        foreach ($this->resolveCustomModules() as $module) {
+        foreach ($this->customModuleList->getList() as $module) {
             $options[] = ['label' => $module, 'value' => $module];
         }
 
         return $options;
-    }
-
-    private function resolveCustomModules(): array
-    {
-        return array_keys(array_filter(
-            $this->componentRegistrar->getPaths(ComponentRegistrar::MODULE),
-            static function (string $moduleName): bool {
-                return strncmp($moduleName, self::MAGENTO_MODULE_PREFIX, strlen(self::MAGENTO_MODULE_PREFIX)) !== 0
-                    && $moduleName !== self::MODULE_NAME;
-            },
-            ARRAY_FILTER_USE_KEY
-        ));
     }
 }

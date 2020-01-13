@@ -10,12 +10,12 @@
             <resource>RedChamps_CleanMenu::extensions_settings</resource>
             <group id="general" translate="label" showInDefault="1" showInWebsite="0" showInStore="0" sortOrder="10">
                 <label>General</label>
-                <field id="restricted_modules" type="multiselect" translate="label comment" showInDefault="1" showInWebsite="0" showInStore="0" sortOrder="10" canRestore="1">
-                    <label>Restricted Modules</label>
+                <field id="allowed_modules" type="multiselect" translate="label comment" showInDefault="1" showInWebsite="0" showInStore="0" sortOrder="10" canRestore="1">
+                    <label>Allowed Modules</label>
                     <source_model>RedChamps\CleanMenu\Model\Config\Source\Modules</source_model>
                     <can_be_empty>1</can_be_empty>
-                    <config_path>extensions_list_settings/general/restricted_modules</config_path>
-                    <comment>We will deny selected modules to have their own menus and tabs in the config section.</comment>
+                    <config_path>extensions_list_settings/general/allowed_modules</config_path>
+                    <comment>We will allow the selected modules to have their own menus and tabs in the config section.</comment>
                 </field>
             </group>
         </section>
