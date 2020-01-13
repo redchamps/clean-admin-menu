@@ -25,7 +25,7 @@ final class MenuBuilderCommand
         if (isset($result['module'])) {
             $moduleName = $result['module'] ?? '';
             $parentId = $result['parent'] ?? null;
-            if ($parentId === null && $this->allowedModule->isAllowed($moduleName)) {
+            if ($parentId === null && !$this->allowedModule->isAllowed($moduleName)) {
                 $result['parent'] = Config::MENU_ID;
             }
         }
