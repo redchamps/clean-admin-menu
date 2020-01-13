@@ -4,5 +4,20 @@
         <tab id="extensions_list" translate="label" sortOrder="999999">
             <label>Extensions</label>
         </tab>
+        <section id="extensions_list_settings" translate="label" showInDefault="1" showInWebsite="0" showInStore="0" sortOrder="1">
+            <tab>extensions_list</tab>
+            <label>Settings</label>
+            <resource>RedChamps_CleanMenu::extensions_settings</resource>
+            <group id="general" translate="label" showInDefault="1" showInWebsite="0" showInStore="0" sortOrder="10">
+                <label>General</label>
+                <field id="restricted_module" type="multiselect" translate="label comment" showInDefault="1" showInWebsite="0" showInStore="0" sortOrder="10" canRestore="1">
+                    <label>Restricted Modules</label>
+                    <source_model>RedChamps\CleanMenu\Model\Config\Source\Modules</source_model>
+                    <can_be_empty>1</can_be_empty>
+                    <config_path>extensions_list_settings/general/restricted_module</config_path>
+                    <comment>We will deny selected modules to have their own menus and tabs in the config section.</comment>
+                </field>
+            </group>
+        </section>
     </system>
 </config>

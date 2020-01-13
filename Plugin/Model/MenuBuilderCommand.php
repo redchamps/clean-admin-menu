@@ -1,20 +1,35 @@
 <?php
+declare(strict_types=1);
+
 namespace RedChamps\CleanMenu\Plugin\Model;
 
 use Magento\Backend\Model\Menu\Builder\AbstractCommand;
-use RedChamps\CleanMenu\Plugin\Base;
+use RedChamps\CleanMenu\Model\Config;
+use function in_array;
 
-class MenuBuilderCommand extends Base
+final class MenuBuilderCommand
 {
-    public function afterExecute(AbstractCommand $subject, $result)
+    /**
+     * @var Config
+     */
+    private $config;
+
+    public function __construct(
+        Config $config
+    ) {
+        $this->config = $config;
+    }
+
+    public function afterExecute(AbstractCommand $subject, $result): array
     {
-        if (isset($result["module"])) {
-            $moduleName = $result["module"];
-            $parentId = isset($result["parent"]) ? $result["parent"] : null;
-            if ($parentId == null && strpos($moduleName, "Magento_") !== 0 && $moduleName != "RedChamps_CleanMenu") {
-                $result["parent"] = self::MENU_ID;
+        if (isset($result['module'])) {
+            $moduleName = $result['module'] ?? '';
+            $parentId = $result['parent'] ?? null;
+            if ($parentId === null && in_array($moduleName, $this->config->getRestrictedModules(), true)) {
+                $result['parent'] = Config::MENU_ID;
             }
         }
+
         return $result;
     }
 }

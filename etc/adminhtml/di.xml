@@ -12,7 +12,4 @@
     <type name="Magento\Config\Model\Config\Structure">
         <plugin sortOrder="1" name="redChampsCleanMenuStructure" type="RedChamps\CleanMenu\Plugin\Model\ConfigStructure"/>
     </type>
-    <type name="Magento\Config\Block\System\Config\Tabs">
-        <plugin sortOrder="1" name="redChampsCleanMenuTabs" type="RedChamps\CleanMenu\Plugin\Block\SystemConfigTabs"/>
-    </type>
 </config>
