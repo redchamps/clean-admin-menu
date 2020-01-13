@@ -10,7 +10,7 @@ final class Config
 {
     public const MENU_ID = 'RedChamps_CleanMenu::extensions';
 
-    private const CONFIG_PATH_RESTRICTED_MODULES = 'extensions_list_settings/general/restricted_module';
+    private const CONFIG_PATH_RESTRICTED_MODULES = 'extensions_list_settings/general/restricted_modules';
 
     /**
      * @var ScopeConfigInterface
