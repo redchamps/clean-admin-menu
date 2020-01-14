@@ -1,19 +1,23 @@
 <?php
+declare(strict_types=1);
+
 namespace RedChamps\CleanMenu\Plugin\Model;
 
 use Magento\Backend\Model\Menu\Item;
-use RedChamps\CleanMenu\Plugin\Base;
+use RedChamps\CleanMenu\Model\Config;
+use function reset;
 
-class MenuItem extends Base
+final class MenuItem
 {
     public function afterGetChildren(Item $subject, $result)
     {
-        if ($subject->getId() == self::MENU_ID) {
-            $firstItem = $this->getFirstItem($result);
+        if ($subject->getId() === Config::MENU_ID) {
+            $firstItem = reset($result);
             if ($firstItem && $firstItem->getId()) {
                 $firstItem->setTooltip($subject->getId());
             }
         }
+
         return $result;
     }
 }

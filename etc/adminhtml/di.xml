@@ -12,7 +12,23 @@
     <type name="Magento\Config\Model\Config\Structure">
         <plugin sortOrder="1" name="redChampsCleanMenuStructure" type="RedChamps\CleanMenu\Plugin\Model\ConfigStructure"/>
     </type>
-    <type name="Magento\Config\Block\System\Config\Tabs">
-        <plugin sortOrder="1" name="redChampsCleanMenuTabs" type="RedChamps\CleanMenu\Plugin\Block\SystemConfigTabs"/>
-    </type>
+    <virtualType name="RedChamps\CleanMenu\Model\Config\Backend\Modules" type="RedChamps\CleanMenu\Model\Config\Backend\Cache">
+        <arguments>
+            <argument name="data" xsi:type="array">
+                <item name="cache_tags" xsi:type="array">
+                    <item name="admin_menu" xsi:type="const">Magento\Backend\Block\Menu::CACHE_TAGS</item>
+                </item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="RedChamps\CleanMenu\Model\Config\Source\Modules" type="RedChamps\CleanMenu\Model\Config\Source\Options">
+        <arguments>
+            <argument name="list" xsi:type="object">RedChamps\CleanMenu\Model\CustomModuleList</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="RedChamps\CleanMenu\Model\Config\Source\Tabs" type="RedChamps\CleanMenu\Model\Config\Source\Options">
+        <arguments>
+            <argument name="list" xsi:type="object">RedChamps\CleanMenu\Model\CustomTabList</argument>
+        </arguments>
+    </virtualType>
 </config>

@@ -4,5 +4,28 @@
         <tab id="extensions_list" translate="label" sortOrder="999999">
             <label>Extensions</label>
         </tab>
+        <section id="extensions_list_settings" translate="label" showInDefault="1" showInWebsite="0" showInStore="0" sortOrder="1">
+            <tab>extensions_list</tab>
+            <label>Settings</label>
+            <resource>RedChamps_CleanMenu::extensions_settings</resource>
+            <group id="general" translate="label" showInDefault="1" showInWebsite="0" showInStore="0" sortOrder="10">
+                <label>General</label>
+                <field id="allowed_modules" type="multiselect" translate="label comment" showInDefault="1" showInWebsite="0" showInStore="0" sortOrder="10">
+                    <label>Allowed Modules</label>
+                    <source_model>RedChamps\CleanMenu\Model\Config\Source\Modules</source_model>
+                    <backend_model>RedChamps\CleanMenu\Model\Config\Backend\Modules</backend_model>
+                    <can_be_empty>1</can_be_empty>
+                    <config_path>extensions_list_settings/general/allowed_modules</config_path>
+                    <comment>We will allow the selected modules to have their own menus.</comment>
+                </field>
+                <field id="allowed_tabs" type="multiselect" translate="label comment" showInDefault="1" showInWebsite="0" showInStore="0" sortOrder="20" canRestore="1">
+                    <label>Allowed Tabs</label>
+                    <source_model>RedChamps\CleanMenu\Model\Config\Source\Tabs</source_model>
+                    <can_be_empty>1</can_be_empty>
+                    <config_path>extensions_list_settings/general/allowed_tabs</config_path>
+                    <comment>We will allow the selected tabs in the config section.</comment>
+                </field>
+            </group>
+        </section>
     </system>
 </config>

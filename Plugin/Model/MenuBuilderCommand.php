@@ -1,20 +1,35 @@
 <?php
+declare(strict_types=1);
+
 namespace RedChamps\CleanMenu\Plugin\Model;
 
 use Magento\Backend\Model\Menu\Builder\AbstractCommand;
-use RedChamps\CleanMenu\Plugin\Base;
+use RedChamps\CleanMenu\Model\AllowedModule;
+use RedChamps\CleanMenu\Model\Config;
 
-class MenuBuilderCommand extends Base
+final class MenuBuilderCommand
 {
-    public function afterExecute(AbstractCommand $subject, $result)
+    /**
+     * @var AllowedModule
+     */
+    private $allowedModule;
+
+    public function __construct(
+        AllowedModule $allowedModule
+    ) {
+        $this->allowedModule = $allowedModule;
+    }
+
+    public function afterExecute(AbstractCommand $subject, $result): array
     {
-        if (isset($result["module"])) {
-            $moduleName = $result["module"];
-            $parentId = isset($result["parent"]) ? $result["parent"] : null;
-            if ($parentId == null && strpos($moduleName, "Magento_") !== 0 && $moduleName != "RedChamps_CleanMenu") {
-                $result["parent"] = self::MENU_ID;
+        if (isset($result['module'])) {
+            $moduleName = $result['module'] ?? '';
+            $parentId = $result['parent'] ?? null;
+            if ($parentId === null && !$this->allowedModule->isAllowed($moduleName)) {
+                $result['parent'] = Config::MENU_ID;
             }
         }
+
         return $result;
     }
 }

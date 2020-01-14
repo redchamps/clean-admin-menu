@@ -40,7 +40,7 @@
                     <?php if (isset($_section->getData()['tab_original'])):?>
                         <?php $tabOriginal = $_section->getData()['tab_original'];?>
                         <li class="admin__page-nav-item item rc-section-title
-                            <?= isset($tabOriginal['class']) ? $block->escapeHtml($tabOriginal['class']) : "" ?>
+                            <?= isset($tabOriginal['class']) ? $block->escapeHtml($tabOriginal['class']) : '' ?>
                             <?php if ($block->isSectionActive($_section)) : ?> _active<?php endif ?>
                             <?= $_tab->getChildren()->isLast($_section) ? ' _last' : '' ?>">
                             <strong>

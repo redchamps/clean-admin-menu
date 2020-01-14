@@ -3,7 +3,9 @@
     <acl>
         <resources>
             <resource id="Magento_Backend::admin">
-                <resource id="RedChamps_CleanMenu::extensions" title="Extensions" sortOrder="60"/>
+                <resource id="RedChamps_CleanMenu::extensions" title="Extensions" translate="title" sortOrder="60">
+                    <resource id="RedChamps_CleanMenu::extensions_settings" title="Settings" translate="title" sortOrder="10"/>
+                </resource>
             </resource>
         </resources>
     </acl>
