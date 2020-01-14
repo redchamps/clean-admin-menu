@@ -1,16 +1,19 @@
 <?xml version="1.0"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
     <type name="Magento\Backend\Model\Menu\Builder\AbstractCommand">
-        <plugin sortOrder="1" name="moduleForestCleanMenuAbstractCommand" type="RedChamps\CleanMenu\Plugin\Model\MenuBuilderCommand"/>
+        <plugin sortOrder="1" name="redChampsCleanMenuAbstractCommand" type="RedChamps\CleanMenu\Plugin\Model\MenuBuilderCommand"/>
     </type>
     <type name="Magento\Backend\Block\Menu">
-        <plugin sortOrder="1" name="moduleForestCleanMenuMenu" type="RedChamps\CleanMenu\Plugin\Block\MenuBlock"/>
+        <plugin sortOrder="1" name="redChampsCleanMenuMenu" type="RedChamps\CleanMenu\Plugin\Block\MenuBlock"/>
     </type>
     <type name="Magento\Backend\Model\Menu\Item">
-        <plugin sortOrder="1" name="moduleForestCleanMenuItem" type="RedChamps\CleanMenu\Plugin\Model\MenuItem"/>
+        <plugin sortOrder="1" name="redChampsCleanMenuItem" type="RedChamps\CleanMenu\Plugin\Model\MenuItem"/>
     </type>
     <type name="Magento\Config\Model\Config\Structure">
         <plugin sortOrder="1" name="redChampsCleanMenuStructure" type="RedChamps\CleanMenu\Plugin\Model\ConfigStructure"/>
+    </type>
+    <type name="Magento\Backend\Model\Menu\Builder">
+        <plugin sortOrder="1" name="redChampsCleanMenuBuilder" type="RedChamps\CleanMenu\Plugin\Model\MenuBuilder"/>
     </type>
     <virtualType name="RedChamps\CleanMenu\Model\Config\Backend\Modules" type="RedChamps\CleanMenu\Model\Config\Backend\Cache">
         <arguments>

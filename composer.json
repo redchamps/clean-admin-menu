@@ -2,7 +2,7 @@
     "name": "redchamps/module-clean-admin-menu",
     "description": "It will merge all third party extensions menu items to single menu item named 'Extensions'.",
     "type": "magento2-module",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "require": {
         "magento/module-backend": "*",
         "magento/module-config": "*"

@@ -10,8 +10,8 @@ final class Config
 {
     public const MENU_ID = 'RedChamps_CleanMenu::extensions';
 
-    private const CONFIG_PATH_ALLOWED_MODULES = 'extensions_list_settings/general/allowed_modules';
-    private const CONFIG_PATH_ALLOWED_TABS = 'extensions_list_settings/general/allowed_tabs';
+    private const CONFIG_PATH_ALLOWED_MODULES = 'clean_admin_menu/settings/allowed_modules';
+    private const CONFIG_PATH_ALLOWED_TABS = 'clean_admin_menu/settings/allowed_tabs';
 
     /**
      * @var ScopeConfigInterface
