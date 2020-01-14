@@ -10,7 +10,7 @@
             <resource>RedChamps_CleanMenu::extensions_settings</resource>
             <group id="general" translate="label" showInDefault="1" showInWebsite="0" showInStore="0" sortOrder="10">
                 <label>General</label>
-                <field id="allowed_modules" type="multiselect" translate="label comment" showInDefault="1" showInWebsite="0" showInStore="0" sortOrder="10" canRestore="1">
+                <field id="allowed_modules" type="multiselect" translate="label comment" showInDefault="1" showInWebsite="0" showInStore="0" sortOrder="10">
                     <label>Allowed Modules</label>
                     <source_model>RedChamps\CleanMenu\Model\Config\Source\Modules</source_model>
                     <backend_model>RedChamps\CleanMenu\Model\Config\Backend\Modules</backend_model>
