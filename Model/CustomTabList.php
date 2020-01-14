@@ -5,8 +5,9 @@ namespace RedChamps\CleanMenu\Model;
 
 use Magento\Config\Model\Config\Structure\Data;
 use function array_column;
-use function array_diff;
-use function array_unique;
+use function array_combine;
+use function array_flip;
+use function array_keys;
 
 final class CustomTabList implements ListInterface
 {
@@ -46,6 +47,8 @@ final class CustomTabList implements ListInterface
     {
         $data = $this->structureData->get();
 
-        return array_diff(array_unique(array_column($data['sections'], 'tab')), self::MANDATORY_TABS);
+        $tabs = array_diff_key($data['tabs'], array_flip(self::MANDATORY_TABS));
+
+        return array_combine(array_keys($tabs), array_column($tabs, 'label'));
     }
 }

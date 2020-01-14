@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace RedChamps\CleanMenu\Model\Config\Source;
 
 use Magento\Framework\Data\OptionSourceInterface;
+use Magento\Framework\Phrase;
 use RedChamps\CleanMenu\Model\ListInterface;
 
 final class Options implements OptionSourceInterface
@@ -33,8 +34,8 @@ final class Options implements OptionSourceInterface
     {
         $options = [];
 
-        foreach ($this->list->getList() as $item) {
-            $options[] = ['label' => $item, 'value' => $item];
+        foreach ($this->list->getList() as $value => $label) {
+            $options[] = ['label' => new Phrase($label), 'value' => $value];
         }
 
         return $options;

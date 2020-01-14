@@ -4,6 +4,7 @@ namespace RedChamps\CleanMenu\Model;
 
 use Magento\Framework\Component\ComponentRegistrar;
 use Magento\Framework\Component\ComponentRegistrarInterface;
+use function array_combine;
 use function array_filter;
 use function array_keys;
 use function strlen;
@@ -33,7 +34,14 @@ final class CustomModuleList implements ListInterface
 
     public function getList(): array
     {
-        return $this->list ?? $this->list = $this->resolveCustomModules();
+        return $this->list ?? $this->list = $this->prepareList();
+    }
+
+    private function prepareList(): array
+    {
+        $modules = $this->resolveCustomModules();
+
+        return array_combine($modules, $modules);
     }
 
     private function resolveCustomModules(): array

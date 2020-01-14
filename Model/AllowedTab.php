@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace RedChamps\CleanMenu\Model;
 
+use function array_key_exists;
 use function in_array;
 
 final class AllowedTab implements IsAllowed
@@ -27,7 +28,7 @@ final class AllowedTab implements IsAllowed
 
     public function isAllowed(string $tabName): bool
     {
-        return !in_array($tabName, $this->customTabList->getList(), true)
+        return !array_key_exists($tabName, $this->customTabList->getList())
             || in_array($tabName, $this->config->getAllowedTabs(), true);
     }
 }
