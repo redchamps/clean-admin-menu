@@ -16,7 +16,14 @@
                     <backend_model>RedChamps\CleanMenu\Model\Config\Backend\Modules</backend_model>
                     <can_be_empty>1</can_be_empty>
                     <config_path>extensions_list_settings/general/allowed_modules</config_path>
-                    <comment>We will allow the selected modules to have their own menus and tabs in the config section.</comment>
+                    <comment>We will allow the selected modules to have their own menus.</comment>
+                </field>
+                <field id="allowed_tabs" type="multiselect" translate="label comment" showInDefault="1" showInWebsite="0" showInStore="0" sortOrder="20" canRestore="1">
+                    <label>Allowed Tabs</label>
+                    <source_model>RedChamps\CleanMenu\Model\Config\Source\Tabs</source_model>
+                    <can_be_empty>1</can_be_empty>
+                    <config_path>extensions_list_settings/general/allowed_tabs</config_path>
+                    <comment>We will allow the selected tabs in the config section.</comment>
                 </field>
             </group>
         </section>

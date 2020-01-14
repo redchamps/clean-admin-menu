@@ -4,14 +4,14 @@ declare(strict_types=1);
 namespace RedChamps\CleanMenu\Model\Config\Source;
 
 use Magento\Framework\Data\OptionSourceInterface;
-use RedChamps\CleanMenu\Model\CustomModuleList;
+use RedChamps\CleanMenu\Model\ListInterface;
 
-final class Modules implements OptionSourceInterface
+final class Options implements OptionSourceInterface
 {
     /**
-     * @var CustomModuleList
+     * @var ListInterface
      */
-    private $customModuleList;
+    private $list;
 
     /**
      * @var string[][]
@@ -19,9 +19,9 @@ final class Modules implements OptionSourceInterface
     private $options;
 
     public function __construct(
-        CustomModuleList $customModuleList
+        ListInterface $list
     ) {
-        $this->customModuleList = $customModuleList;
+        $this->list = $list;
     }
 
     public function toOptionArray(): array
@@ -33,8 +33,8 @@ final class Modules implements OptionSourceInterface
     {
         $options = [];
 
-        foreach ($this->customModuleList->getList() as $module) {
-            $options[] = ['label' => $module, 'value' => $module];
+        foreach ($this->list->getList() as $item) {
+            $options[] = ['label' => $item, 'value' => $item];
         }
 
         return $options;

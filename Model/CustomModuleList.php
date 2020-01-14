@@ -10,7 +10,7 @@ use function strlen;
 use function strncmp;
 use const ARRAY_FILTER_USE_KEY;
 
-final class CustomModuleList
+final class CustomModuleList implements ListInterface
 {
     private const MAGENTO_MODULE_PREFIX = 'Magento_';
     private const MODULE_NAME = 'RedChamps_CleanMenu';
@@ -21,7 +21,7 @@ final class CustomModuleList
     private $componentRegistrar;
 
     /**
-     * @var string[][]
+     * @var string[]
      */
     private $list;
 

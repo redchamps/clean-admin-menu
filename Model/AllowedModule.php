@@ -5,7 +5,7 @@ namespace RedChamps\CleanMenu\Model;
 
 use function in_array;
 
-final class AllowedModule
+final class AllowedModule implements IsAllowed
 {
     /**
      * @var Config

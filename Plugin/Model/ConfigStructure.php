@@ -7,25 +7,10 @@ use Magento\Config\Model\Config\ScopeDefiner;
 use Magento\Config\Model\Config\Structure;
 use Magento\Config\Model\Config\Structure\Data;
 use Magento\Config\Model\Config\Structure\Element\Iterator\Tab;
-use function in_array;
+use RedChamps\CleanMenu\Model\AllowedTab;
 
 final class ConfigStructure
 {
-    /**
-     * @var string[]
-     */
-    private const CORE_TABS = [
-        'general',
-        'catalog',
-        'customer',
-        'sales',
-        'advanced',
-        'service',
-        'security',
-        'yotpo',
-        'ddg_automation'
-    ];
-
     /**
      * @var array
      */
@@ -48,27 +33,35 @@ final class ConfigStructure
      */
     private $scopeDefiner;
 
+    /**
+     * @var AllowedTab
+     */
+    private $allowedTab;
+
     public function __construct(
         Data $structureData,
         Tab $tabIterator,
-        ScopeDefiner $scopeDefiner
+        ScopeDefiner $scopeDefiner,
+        AllowedTab $allowedTab
     ) {
         $this->structureData = $structureData;
         $this->tabIterator = $tabIterator;
         $this->scopeDefiner = $scopeDefiner;
+        $this->allowedTab = $allowedTab;
     }
 
     public function aroundGetTabs(Structure $subject, callable $proceed)
     {
         $data = $this->structureData->get();
-        
+
         if (isset($data['sections'])) {
             foreach ($data['sections'] as $sectionId => $section) {
                 if (isset($section['tab']) && $section['tab']) {
-                    if (in_array($section['tab'], self::CORE_TABS, true)) {
-                        $data['tabs'][$section['tab']]['children'][$sectionId] = $section;
+                    $currentTab = $section['tab'];
+                    if ($this->allowedTab->isAllowed($currentTab)) {
+                        $data['tabs'][$currentTab]['children'][$sectionId] = $section;
                     } else {
-                        $this->thirdPartyTabs[$section['tab']][$sectionId] = $section;
+                        $this->thirdPartyTabs[$currentTab][$sectionId] = $section;
                     }
                 }
             }

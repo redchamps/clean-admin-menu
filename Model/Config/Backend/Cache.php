@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace RedChamps\CleanMenu\Model\Config\Backend;
 
-use Magento\Backend\Block\Menu;
 use Magento\Framework\App\Cache\Manager;
 use Magento\Framework\App\Cache\TypeListInterface;
 use Magento\Framework\App\Config\ScopeConfigInterface;
@@ -13,7 +12,7 @@ use Magento\Framework\Model\Context;
 use Magento\Framework\Model\ResourceModel\AbstractResource;
 use Magento\Framework\Registry;
 
-class Modules extends Value
+class Cache extends Value
 {
     /**
      * @var Manager
@@ -37,7 +36,7 @@ class Modules extends Value
     public function afterSave()
     {
         if ($this->isValueChanged()) {
-            $this->cacheManager->flush([Menu::CACHE_TAGS]);
+            $this->cacheManager->flush($this->getData('cache_tags'));
         }
 
         return $this;
