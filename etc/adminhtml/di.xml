@@ -1,13 +1,16 @@
 <?xml version="1.0"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
     <type name="Magento\Backend\Model\Menu\Builder\AbstractCommand">
-        <plugin sortOrder="1" name="moduleForestCleanMenuAbstractCommand" type="RedChamps\CleanMenu\Plugin\Model\MenuBuilderCommand"/>
+        <plugin sortOrder="1" name="redChampsCleanMenuAbstractCommand" type="RedChamps\CleanMenu\Plugin\Model\MenuBuilderCommand"/>
     </type>
     <type name="Magento\Backend\Block\Menu">
-        <plugin sortOrder="1" name="moduleForestCleanMenuMenu" type="RedChamps\CleanMenu\Plugin\Block\MenuBlock"/>
+        <plugin sortOrder="1" name="redChampsCleanMenuMenu" type="RedChamps\CleanMenu\Plugin\Block\MenuBlock"/>
+    </type>
+    <type name="Magento\Backend\Model\Menu\Builder">
+        <plugin sortOrder="1" name="redChampsCleanMenuBuilder" type="RedChamps\CleanMenu\Plugin\Model\MenuBuilder"/>
     </type>
     <type name="Magento\Backend\Model\Menu\Item">
-        <plugin sortOrder="1" name="moduleForestCleanMenuItem" type="RedChamps\CleanMenu\Plugin\Model\MenuItem"/>
+        <plugin sortOrder="1" name="redChampsCleanMenuItem" type="RedChamps\CleanMenu\Plugin\Model\MenuItem"/>
     </type>
     <type name="Magento\Config\Model\Config\Structure">
         <plugin sortOrder="1" name="redChampsCleanMenuStructure" type="RedChamps\CleanMenu\Plugin\Model\ConfigStructure"/>
@@ -48,8 +51,8 @@
     <virtualType name="RedChamps\CleanMenu\Model\ModuleRuleConfig" type="RedChamps\CleanMenu\Model\RuleConfig">
         <arguments>
             <argument name="configPaths" xsi:type="array">
-                <item name="ruleId" xsi:type="string">extensions_list_settings/general/rule_modules</item>
-                <item name="items" xsi:type="string">extensions_list_settings/general/allowed_modules</item>
+                <item name="ruleId" xsi:type="string">clean_admin_menu/settings/rule_modules</item>
+                <item name="items" xsi:type="string">clean_admin_menu/settings/allowed_modules</item>
             </argument>
             <argument name="list" xsi:type="object">RedChamps\CleanMenu\Model\CustomModuleList</argument>
         </arguments>
@@ -57,8 +60,8 @@
     <virtualType name="RedChamps\CleanMenu\Model\TabRuleConfig" type="RedChamps\CleanMenu\Model\RuleConfig">
         <arguments>
             <argument name="configPaths" xsi:type="array">
-                <item name="ruleId" xsi:type="string">extensions_list_settings/general/rule_tabs</item>
-                <item name="items" xsi:type="string">extensions_list_settings/general/allowed_tabs</item>
+                <item name="ruleId" xsi:type="string">clean_admin_menu/settings/rule_tabs</item>
+                <item name="items" xsi:type="string">clean_admin_menu/settings/allowed_tabs</item>
             </argument>
             <argument name="list" xsi:type="object">RedChamps\CleanMenu\Model\CustomTabList</argument>
         </arguments>

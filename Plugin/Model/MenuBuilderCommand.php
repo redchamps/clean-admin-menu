@@ -1,6 +1,4 @@
 <?php
-declare(strict_types=1);
-
 namespace RedChamps\CleanMenu\Plugin\Model;
 
 use Magento\Backend\Model\Menu\Builder\AbstractCommand;
