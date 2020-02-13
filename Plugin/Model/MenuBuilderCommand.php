@@ -4,18 +4,18 @@ declare(strict_types=1);
 namespace RedChamps\CleanMenu\Plugin\Model;
 
 use Magento\Backend\Model\Menu\Builder\AbstractCommand;
-use RedChamps\CleanMenu\Model\AllowedModule;
 use RedChamps\CleanMenu\Model\Config;
+use RedChamps\CleanMenu\Model\IsAllowedInterface;
 
 final class MenuBuilderCommand
 {
     /**
-     * @var AllowedModule
+     * @var IsAllowedInterface
      */
     private $allowedModule;
 
     public function __construct(
-        AllowedModule $allowedModule
+        IsAllowedInterface $allowedModule
     ) {
         $this->allowedModule = $allowedModule;
     }

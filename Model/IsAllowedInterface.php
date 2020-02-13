@@ -6,7 +6,7 @@ namespace RedChamps\CleanMenu\Model;
 /**
  * @api
  */
-interface IsAllowed
+interface IsAllowedInterface
 {
     public function isAllowed(string $name): bool;
 }

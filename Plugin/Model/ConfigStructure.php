@@ -7,7 +7,7 @@ use Magento\Config\Model\Config\ScopeDefiner;
 use Magento\Config\Model\Config\Structure;
 use Magento\Config\Model\Config\Structure\Data;
 use Magento\Config\Model\Config\Structure\Element\Iterator\Tab;
-use RedChamps\CleanMenu\Model\AllowedTab;
+use RedChamps\CleanMenu\Model\IsAllowedInterface;
 
 final class ConfigStructure
 {
@@ -34,7 +34,7 @@ final class ConfigStructure
     private $scopeDefiner;
 
     /**
-     * @var AllowedTab
+     * @var IsAllowedInterface
      */
     private $allowedTab;
 
@@ -42,7 +42,7 @@ final class ConfigStructure
         Data $structureData,
         Tab $tabIterator,
         ScopeDefiner $scopeDefiner,
-        AllowedTab $allowedTab
+        IsAllowedInterface $allowedTab
     ) {
         $this->structureData = $structureData;
         $this->tabIterator = $tabIterator;

@@ -3,7 +3,9 @@
     <default>
         <extensions_list_settings>
             <general>
+                <rule_modules>deniedByDefault</rule_modules>
                 <allowed_tabs>yotpo,ddg_automation</allowed_tabs>
+                <rule_tabs>deniedByDefault</rule_tabs>
             </general>
         </extensions_list_settings>
     </default>
