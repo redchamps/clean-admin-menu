@@ -11,7 +11,7 @@
             <tab>redchamps</tab>
             <label>Clean Admin Menu</label>
             <resource>RedChamps_CleanMenu::settings</resource>
-            <group id="general" translate="label" showInDefault="1" showInWebsite="0" showInStore="0" sortOrder="10">
+            <group id="settings" translate="label" showInDefault="1" showInWebsite="0" showInStore="0" sortOrder="10">
                 <label>General</label>
                 <field id="allowed_modules" type="multiselect" translate="label comment" showInDefault="1" showInWebsite="0" showInStore="0" sortOrder="10">
                     <label>Modules in menu</label>
