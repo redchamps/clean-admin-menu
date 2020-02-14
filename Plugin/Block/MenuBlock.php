@@ -11,10 +11,10 @@ final class MenuBlock
 {
     public function beforeRenderNavigation(
         Menu $subject,
-        Menu $menu,
+        $menu,
         int $level = 0,
         int $limit = 0,
-        array $colBrakes = []
+        $colBrakes = []
     ): array {
         if ($level === 1) {
             $firstItem = reset($menu);

@@ -51,8 +51,8 @@ final class CustomModuleList implements ListInterface
         return array_keys(array_filter(
             $this->componentRegistrar->getPaths(ComponentRegistrar::MODULE),
             static function (string $moduleName): bool {
-                return strncmp($moduleName, self::MAGENTO_MODULE_PREFIX, strlen(self::MAGENTO_MODULE_PREFIX)) !== 0
-                    && $moduleName !== self::MODULE_NAME;
+                return (strncmp($moduleName, self::MAGENTO_MODULE_PREFIX, strlen(self::MAGENTO_MODULE_PREFIX)) !== 0
+                        && $moduleName !== self::MODULE_NAME) || $moduleName == "Magento_Marketplace";
             },
             ARRAY_FILTER_USE_KEY
         ));
