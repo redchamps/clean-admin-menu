@@ -14,7 +14,7 @@ final class MenuItem
         if ($subject->getId() === Config::MENU_ID) {
             $firstItem = reset($result);
             if ($firstItem && $firstItem->getId()) {
-                $firstItem->setTooltip($subject->getId());
+                $firstItem->setTooltip(Config::MENU_ID);
             }
         }
 

@@ -9,11 +9,18 @@ use function reset;
 
 final class MenuBlock
 {
-    public function beforeRenderNavigation(Menu $subject, $menu, $level = 0, $limit = 0, $colBrakes = [])
-    {
-        $firstItem = reset($menu);
-        if ($firstItem && $firstItem->toArray()['toolTip'] === Config::MENU_ID) {
-            $level = $level === 1 ? 0 : $level;
+    public function beforeRenderNavigation(
+        Menu $subject,
+        Menu $menu,
+        int $level = 0,
+        int $limit = 0,
+        array $colBrakes = []
+    ): array {
+        if ($level === 1) {
+            $firstItem = reset($menu);
+            if ($firstItem && $firstItem->toArray()['toolTip'] === Config::MENU_ID) {
+                $level = 0;
+            }
         }
 
         return [$menu, $level, $limit, $colBrakes];
