@@ -4,20 +4,20 @@ declare(strict_types=1);
 namespace RedChamps\CleanMenu\Plugin\Model;
 
 use Magento\Backend\Model\Menu\Builder\AbstractCommand;
+use RedChamps\CleanMenu\Api\IsAllowedInterface;
 use RedChamps\CleanMenu\Model\Config;
-use RedChamps\CleanMenu\Model\IsAllowedInterface;
 
 final class MenuBuilderCommand
 {
     /**
      * @var IsAllowedInterface
      */
-    private $allowedModule;
+    private $isAllowed;
 
     public function __construct(
-        IsAllowedInterface $allowedModule
+        IsAllowedInterface $isAllowed
     ) {
-        $this->allowedModule = $allowedModule;
+        $this->isAllowed = $isAllowed;
     }
 
     public function afterExecute(AbstractCommand $subject, $result): array
@@ -25,7 +25,7 @@ final class MenuBuilderCommand
         if (isset($result['module'])) {
             $moduleName = $result['module'] ?? '';
             $parentId = $result['parent'] ?? null;
-            if ($parentId === null && !$this->allowedModule->isAllowed($moduleName)) {
+            if ($parentId === null && !$this->isAllowed->isAllowed($moduleName)) {
                 $result['parent'] = Config::MENU_ID;
             }
         }

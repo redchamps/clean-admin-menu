@@ -4,6 +4,8 @@ declare(strict_types=1);
 namespace RedChamps\CleanMenu\Model;
 
 use Magento\Framework\App\Config\ScopeConfigInterface;
+use RedChamps\CleanMenu\Spi\ListInterface;
+use RedChamps\CleanMenu\Spi\RuleConfigInterface;
 use function array_keys;
 
 final class RuleConfig implements RuleConfigInterface

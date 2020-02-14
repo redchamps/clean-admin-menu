@@ -1,8 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace RedChamps\CleanMenu\Model;
+namespace RedChamps\CleanMenu\Spi;
 
+/**
+ * @spi
+ */
 interface RuleConfigInterface
 {
     public function getRuleId(): string;

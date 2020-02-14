@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace RedChamps\CleanMenu\Model\AllowedRule;
 
-use RedChamps\CleanMenu\Model\IsAllowedInterface;
+use RedChamps\CleanMenu\Api\IsAllowedInterface;
 use function array_diff;
 use function in_array;
 

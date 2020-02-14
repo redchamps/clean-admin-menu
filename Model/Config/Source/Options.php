@@ -5,7 +5,7 @@ namespace RedChamps\CleanMenu\Model\Config\Source;
 
 use Magento\Framework\Data\OptionSourceInterface;
 use Magento\Framework\Phrase;
-use RedChamps\CleanMenu\Model\ListInterface;
+use RedChamps\CleanMenu\Spi\ListInterface;
 
 final class Options implements OptionSourceInterface
 {

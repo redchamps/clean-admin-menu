@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace RedChamps\CleanMenu\Model;
+namespace RedChamps\CleanMenu\Spi;
 
 /**
- * @api
+ * @spi
  */
 interface ListInterface
 {
