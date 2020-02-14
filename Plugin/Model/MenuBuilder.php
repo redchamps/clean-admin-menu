@@ -9,18 +9,12 @@ use RedChamps\CleanMenu\Model\Config;
 
 final class MenuBuilder
 {
-    /**
-     * @param Builder $subject
-     * @param Menu $result
-     * @return Menu
-     */
-    public function afterGetResult(Builder $subject, $result): Menu
+    public function afterGetResult(Builder $subject, Menu $result): Menu
     {
-        if ($result && $menuItem = $result->get(Config::MENU_ID)) {
-            if (!$menuItem->hasChildren()) {
-                $result->remove(Config::MENU_ID);
-            }
+        if ($result && $result->get(Config::MENU_ID) && !$result->get(Config::MENU_ID)->hasChildren()) {
+            $result->remove(Config::MENU_ID);
         }
+
         return $result;
     }
 }

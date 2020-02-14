@@ -6,14 +6,16 @@
     <type name="Magento\Backend\Block\Menu">
         <plugin sortOrder="1" name="redChampsCleanMenuMenu" type="RedChamps\CleanMenu\Plugin\Block\MenuBlock"/>
     </type>
+    <type name="Magento\Backend\Model\Menu\Builder">
+        <plugin sortOrder="1" name="redChampsCleanMenuBuilder" type="RedChamps\CleanMenu\Plugin\Model\MenuBuilder"/>
+    </type>
     <type name="Magento\Backend\Model\Menu\Item">
         <plugin sortOrder="1" name="redChampsCleanMenuItem" type="RedChamps\CleanMenu\Plugin\Model\MenuItem"/>
     </type>
     <type name="Magento\Config\Model\Config\Structure">
-        <plugin sortOrder="1" name="redChampsCleanMenuStructure" type="RedChamps\CleanMenu\Plugin\Model\ConfigStructure"/>
-    </type>
-    <type name="Magento\Backend\Model\Menu\Builder">
-        <plugin sortOrder="1" name="redChampsCleanMenuBuilder" type="RedChamps\CleanMenu\Plugin\Model\MenuBuilder"/>
+        <arguments>
+            <argument name="structureData" xsi:type="object">RedChamps\CleanMenu\Model\Config\Structure\Data</argument>
+        </arguments>
     </type>
     <virtualType name="RedChamps\CleanMenu\Model\Config\Backend\Modules" type="RedChamps\CleanMenu\Model\Config\Backend\Cache">
         <arguments>
@@ -34,4 +36,64 @@
             <argument name="list" xsi:type="object">RedChamps\CleanMenu\Model\CustomTabList</argument>
         </arguments>
     </virtualType>
+    <type name="RedChamps\CleanMenu\Model\Config\Source\Rules">
+        <arguments>
+            <argument name="options" xsi:type="array">
+                <item name="allowedByDefault" xsi:type="array">
+                    <item name="value" xsi:type="const">RedChamps\CleanMenu\Model\AllowedRule\AllowedByDefault::RULE_CODE</item>
+                    <item name="label" xsi:type="string" translatable="true">Selected items are denied</item>
+                </item>
+                <item name="deniedByDefault" xsi:type="array">
+                    <item name="value" xsi:type="const">RedChamps\CleanMenu\Model\AllowedRule\DeniedByDefault::RULE_CODE</item>
+                    <item name="label" xsi:type="string" translatable="true">Selected items are allowed</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="RedChamps\CleanMenu\Model\ModuleRuleConfig" type="RedChamps\CleanMenu\Model\RuleConfig">
+        <arguments>
+            <argument name="configPaths" xsi:type="array">
+                <item name="ruleId" xsi:type="string">clean_admin_menu/settings/rule_modules</item>
+                <item name="items" xsi:type="string">clean_admin_menu/settings/allowed_modules</item>
+            </argument>
+            <argument name="list" xsi:type="object">RedChamps\CleanMenu\Model\CustomModuleList</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="RedChamps\CleanMenu\Model\TabRuleConfig" type="RedChamps\CleanMenu\Model\RuleConfig">
+        <arguments>
+            <argument name="configPaths" xsi:type="array">
+                <item name="ruleId" xsi:type="string">clean_admin_menu/settings/rule_tabs</item>
+                <item name="items" xsi:type="string">clean_admin_menu/settings/allowed_tabs</item>
+            </argument>
+            <argument name="list" xsi:type="object">RedChamps\CleanMenu\Model\CustomTabList</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="RedChamps\CleanMenu\Model\AllowedModule" type="RedChamps\CleanMenu\Model\IsAllowedStrategy">
+        <arguments>
+            <argument name="config" xsi:type="object">RedChamps\CleanMenu\Model\ModuleRuleConfig</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="RedChamps\CleanMenu\Model\AllowedTab" type="RedChamps\CleanMenu\Model\IsAllowedStrategy">
+        <arguments>
+            <argument name="config" xsi:type="object">RedChamps\CleanMenu\Model\TabRuleConfig</argument>
+        </arguments>
+    </virtualType>
+    <type name="RedChamps\CleanMenu\Model\RuleFactory">
+        <arguments>
+            <argument name="rules" xsi:type="array">
+                <item name="allowedByDefault" xsi:type="string">RedChamps\CleanMenu\Model\AllowedRule\AllowedByDefault</item>
+                <item name="deniedByDefault" xsi:type="string">RedChamps\CleanMenu\Model\AllowedRule\DeniedByDefault</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="RedChamps\CleanMenu\Plugin\Model\MenuBuilderCommand">
+        <arguments>
+            <argument name="isAllowed" xsi:type="object">RedChamps\CleanMenu\Model\AllowedModule</argument>
+        </arguments>
+    </type>
+    <type name="RedChamps\CleanMenu\Model\Config\Structure\Data">
+        <arguments>
+            <argument name="isAllowed" xsi:type="object">RedChamps\CleanMenu\Model\AllowedTab</argument>
+        </arguments>
+    </type>
 </config>

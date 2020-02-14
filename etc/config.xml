@@ -3,7 +3,9 @@
     <default>
         <clean_admin_menu>
             <settings>
+                <rule_modules>deniedByDefault</rule_modules>
                 <allowed_tabs>yotpo,ddg_automation</allowed_tabs>
+                <rule_tabs>deniedByDefault</rule_tabs>
             </settings>
         </clean_admin_menu>
     </default>
