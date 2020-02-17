@@ -68,12 +68,17 @@
             <argument name="list" xsi:type="object">RedChamps\CleanMenu\Model\CustomTabList</argument>
         </arguments>
     </virtualType>
-    <virtualType name="RedChamps\CleanMenu\Model\AllowedModule" type="RedChamps\CleanMenu\Model\IsAllowedStrategy">
+    <virtualType name="RedChamps\CleanMenu\Model\IsAllowedModuleStrategy" type="RedChamps\CleanMenu\Model\IsAllowedStrategy">
         <arguments>
             <argument name="config" xsi:type="object">RedChamps\CleanMenu\Model\ModuleRuleConfig</argument>
         </arguments>
     </virtualType>
-    <virtualType name="RedChamps\CleanMenu\Model\AllowedTab" type="RedChamps\CleanMenu\Model\IsAllowedStrategy">
+    <type name="RedChamps\CleanMenu\Model\IsAllowedModule">
+        <arguments>
+            <argument name="isAllowed" xsi:type="object">RedChamps\CleanMenu\Model\IsAllowedModuleStrategy</argument>
+        </arguments>
+    </type>
+    <virtualType name="RedChamps\CleanMenu\Model\IsAllowedTab" type="RedChamps\CleanMenu\Model\IsAllowedStrategy">
         <arguments>
             <argument name="config" xsi:type="object">RedChamps\CleanMenu\Model\TabRuleConfig</argument>
         </arguments>
@@ -88,12 +93,12 @@
     </type>
     <type name="RedChamps\CleanMenu\Plugin\Model\MenuBuilderCommand">
         <arguments>
-            <argument name="isAllowed" xsi:type="object">RedChamps\CleanMenu\Model\AllowedModule</argument>
+            <argument name="isAllowed" xsi:type="object">RedChamps\CleanMenu\Model\IsAllowedModule</argument>
         </arguments>
     </type>
     <type name="RedChamps\CleanMenu\Model\Config\Structure\Data">
         <arguments>
-            <argument name="isAllowed" xsi:type="object">RedChamps\CleanMenu\Model\AllowedTab</argument>
+            <argument name="isAllowed" xsi:type="object">RedChamps\CleanMenu\Model\IsAllowedTab</argument>
         </arguments>
     </type>
 </config>

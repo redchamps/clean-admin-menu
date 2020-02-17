@@ -13,7 +13,7 @@
             <resource>RedChamps_CleanMenu::settings</resource>
             <group id="settings" translate="label" showInDefault="1" showInWebsite="0" showInStore="0" sortOrder="10">
                 <label>General</label>
-                <field id="allowed_modules" type="multiselect" translate="label comment" showInDefault="1" showInWebsite="0" showInStore="0" sortOrder="10">
+                <field id="allowed_modules" type="multiselect" translate="label comment" showInDefault="1" showInWebsite="0" showInStore="0" sortOrder="10" canRestore="1">
                     <label>Modules in menu</label>
                     <source_model>RedChamps\CleanMenu\Model\Config\Source\Modules</source_model>
                     <backend_model>RedChamps\CleanMenu\Model\Config\Backend\Modules</backend_model>
@@ -28,14 +28,29 @@
                     <config_path>clean_admin_menu/settings/rule_modules</config_path>
                     <comment>We will change the behavior of the allowed module list.</comment>
                 </field>
-                <field id="allowed_tabs" type="multiselect" translate="label comment" showInDefault="1" showInWebsite="0" showInStore="0" sortOrder="30" canRestore="1">
+                <field id="enable_marketplace" type="select" translate="label comment" showInDefault="1" showInWebsite="0" showInStore="0" sortOrder="30" canRestore="1">
+                    <label>Magento Marketplace</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                    <config_path>clean_admin_menu/settings/enable_marketplace</config_path>
+                    <comment>We will remove the Magento Marketplace menu item if disabled.</comment>
+                </field>
+                <field id="move_marketplace" type="select" translate="label comment" showInDefault="1" showInWebsite="0" showInStore="0" sortOrder="40" canRestore="1">
+                    <depends>
+                        <field id="clean_admin_menu/settings/enable_marketplace">1</field>
+                    </depends>
+                    <label>Move Magento Marketplace menu item</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <config_path>clean_admin_menu/settings/move_marketplace</config_path>
+                    <comment>We will move the Magento Marketplace menu item to the "extensions" menu.</comment>
+                </field>
+                <field id="allowed_tabs" type="multiselect" translate="label comment" showInDefault="1" showInWebsite="0" showInStore="0" sortOrder="50" canRestore="1">
                     <label>Tabs in configuration</label>
                     <source_model>RedChamps\CleanMenu\Model\Config\Source\Tabs</source_model>
                     <can_be_empty>1</can_be_empty>
                     <config_path>clean_admin_menu/settings/allowed_tabs</config_path>
                     <comment>We will allow the selected tabs in the config section.</comment>
                 </field>
-                <field id="rule_tabs" type="select" translate="label comment" showInDefault="1" showInWebsite="0" showInStore="0" sortOrder="40" canRestore="1">
+                <field id="rule_tabs" type="select" translate="label comment" showInDefault="1" showInWebsite="0" showInStore="0" sortOrder="60" canRestore="1">
                     <label>Rule</label>
                     <source_model>RedChamps\CleanMenu\Model\Config\Source\Rules</source_model>
                     <config_path>clean_admin_menu/settings/rule_tabs</config_path>

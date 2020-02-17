@@ -11,16 +11,14 @@ final class MenuBlock
 {
     public function beforeRenderNavigation(
         Menu $subject,
-        Menu $menu,
+        $menu,
         int $level = 0,
         int $limit = 0,
-        array $colBrakes = []
+        $colBrakes = []
     ): array {
-        if ($level === 1) {
-            $firstItem = reset($menu);
-            if ($firstItem && $firstItem->toArray()['toolTip'] === Config::MENU_ID) {
-                $level = 0;
-            }
+        $firstItem = reset($menu);
+        if ($level === 1 && $firstItem && $firstItem->toArray()['toolTip'] === Config::MENU_ID) {
+            $level = 0;
         }
 
         return [$menu, $level, $limit, $colBrakes];

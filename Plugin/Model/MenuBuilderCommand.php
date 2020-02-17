@@ -22,7 +22,7 @@ final class MenuBuilderCommand
 
     public function afterExecute(AbstractCommand $subject, $result): array
     {
-        if (isset($result['module'], $result['parent']) && !$this->isAllowed->isAllowed($result['module'])) {
+        if (isset($result['module']) && !isset($result['parent']) && !$this->isAllowed->isAllowed($result['module'])) {
             $result['parent'] = Config::MENU_ID;
         }
 

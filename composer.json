@@ -26,6 +26,12 @@
             "role": "maintainer"
         },
         {
+            "name": "Ravinder",
+            "email": "rav@redchamps.com",
+            "homepage": "https://twitter.com/_iamRav",
+            "role": "maintainer"
+        },
+        {
             "name": "Thomas Klein",
             "email": "thomasklein876@gmail.com",
             "homepage": "https://www.linkedin.com/in/thomas-klein/",
@@ -41,6 +47,12 @@
         "magento/module-backend": "*",
         "magento/module-config": "*"
     },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://repo.magento.com/"
+        }
+    ],
     "autoload": {
         "files": [
             "registration.php"
