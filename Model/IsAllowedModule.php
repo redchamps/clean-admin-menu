@@ -33,7 +33,7 @@ final class IsAllowedModule implements IsAllowedInterface
         $isAllowed = true;
 
         if ($name === self::MODULE_NAME) {
-            $isAllowed = $this->config->isMagentoMarketplaceEnabled() && $this->config->isMagentoMarketplaceMoved();
+            $isAllowed = !$this->config->isMagentoMarketplaceMoved();
         }
 
         return $isAllowed && $this->isAllowed->isAllowed($name);

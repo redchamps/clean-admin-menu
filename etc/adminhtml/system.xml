@@ -29,8 +29,9 @@
                     <comment>We will change the behavior of the allowed module list.</comment>
                 </field>
                 <field id="enable_marketplace" type="select" translate="label comment" showInDefault="1" showInWebsite="0" showInStore="0" sortOrder="30" canRestore="1">
-                    <label>Magento Marketplace</label>
+                    <label>Magento Marketplace menu item</label>
                     <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                    <backend_model>RedChamps\CleanMenu\Model\Config\Backend\Modules</backend_model>
                     <config_path>clean_admin_menu/settings/enable_marketplace</config_path>
                     <comment>We will remove the Magento Marketplace menu item if disabled.</comment>
                 </field>
@@ -40,6 +41,7 @@
                     </depends>
                     <label>Move Magento Marketplace menu item</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <backend_model>RedChamps\CleanMenu\Model\Config\Backend\Modules</backend_model>
                     <config_path>clean_admin_menu/settings/move_marketplace</config_path>
                     <comment>We will move the Magento Marketplace menu item to the "extensions" menu.</comment>
                 </field>
