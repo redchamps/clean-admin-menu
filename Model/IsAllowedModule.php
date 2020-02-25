@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace RedChamps\CleanMenu\Model;
 
 use RedChamps\CleanMenu\Api\IsAllowedInterface;
-use function var_dump;
 
 final class IsAllowedModule implements IsAllowedInterface
 {
