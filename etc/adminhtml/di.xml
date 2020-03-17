@@ -1,4 +1,10 @@
 <?xml version="1.0"?>
+<!--
+/**
+ * Copyright © RedChamps, All rights reserved.
+ * See LICENSE bundled with this library for license details.
+ */
+-->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
     <type name="Magento\Backend\Model\Menu\Builder\AbstractCommand">
         <plugin sortOrder="1" name="redChampsCleanMenuAbstractCommand" type="RedChamps\CleanMenu\Plugin\Model\MenuBuilderCommand"/>

@@ -1,7 +1,7 @@
 # Clean Admin Menu - Magento 2 Extension 
 
 [![Latest Stable Version](https://img.shields.io/packagist/v/redchamps/module-clean-admin-menu.svg?style=flat-square)](https://packagist.org/packages/redchamps/module-clean-admin-menu)
-[![License](https://img.shields.io/github/license/redchamps/clean-admin-menu.svg?style=flat-square)](./LICENSE) 
+[![License: MIT](https://img.shields.io/github/license/redchamps/clean-admin-menu.svg?style=flat-square)](./LICENSE) 
 [![Packagist](https://img.shields.io/packagist/dt/redchamps/module-clean-admin-menu.svg?style=flat-square)](https://packagist.org/packages/redchamps/module-clean-admin-menu/stats)
 [![Packagist](https://img.shields.io/packagist/dm/redchamps/module-clean-admin-menu.svg?style=flat-square)](https://packagist.org/packages/redchamps/module-clean-admin-menu/stats)
 
@@ -29,3 +29,7 @@ to a single tab named "**Extensions**" and place it after native Magento tabs.
 Contributions are more than welcome :-)
 
 Please visit our store https://redchamps.com for more free/paid extensions from us.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](./LICENSE) details.

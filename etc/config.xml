@@ -1,4 +1,10 @@
 <?xml version="1.0"?>
+<!--
+/**
+ * Copyright © RedChamps, All rights reserved.
+ * See LICENSE bundled with this library for license details.
+ */
+-->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
     <default>
         <clean_admin_menu>
@@ -7,9 +13,11 @@
                 <rule_modules>deniedByDefault</rule_modules>
                 <allowed_tabs>ddg_automation</allowed_tabs>
                 <rule_tabs>deniedByDefault</rule_tabs>
-                <enable_marketplace>1</enable_marketplace>
-                <move_marketplace>1</move_marketplace>
             </settings>
+            <marketplace>
+                <enabled>1</enabled>
+                <move>1</move>
+            </marketplace>
         </clean_admin_menu>
     </default>
 </config>
