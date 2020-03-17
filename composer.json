@@ -15,8 +15,7 @@
     "homepage": "https://redchamps.com/clean-admin-menu-magento-2-extension.html",
     "readme": "README.md",
     "license": [
-        "OSL-3.0",
-        "AFL-3.0"
+        "MIT"
     ],
     "authors": [
         {
@@ -47,6 +46,12 @@
         "magento/module-backend": "*",
         "magento/module-config": "*"
     },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://repo.magento.com/"
+        }
+    ],
     "autoload": {
         "files": [
             "registration.php"

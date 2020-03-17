@@ -1,4 +1,8 @@
 <?php
+/**
+ * Copyright © RedChamps, All rights reserved.
+ * See LICENSE bundled with this library for license details.
+ */
 declare(strict_types=1);
 
 namespace RedChamps\CleanMenu\Model;
@@ -43,7 +47,7 @@ final class RuleConfig implements RuleConfigInterface
     public function getRuleId(): string
     {
         return $this->configCache['ruleId'] ??
-            $this->configCache['ruleId'] = (string) $this->scopeConfig->getValue($this->configPaths['ruleId']);
+            $this->configCache['ruleId'] = (string)$this->scopeConfig->getValue($this->configPaths['ruleId']);
     }
 
     public function getItems(): array

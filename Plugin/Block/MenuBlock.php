@@ -1,4 +1,8 @@
 <?php
+/**
+ * Copyright © RedChamps, All rights reserved.
+ * See LICENSE bundled with this library for license details.
+ */
 declare(strict_types=1);
 
 namespace RedChamps\CleanMenu\Plugin\Block;
@@ -16,11 +20,9 @@ final class MenuBlock
         int $limit = 0,
         $colBrakes = []
     ): array {
-        if ($level === 1) {
-            $firstItem = reset($menu);
-            if ($firstItem && $firstItem->toArray()['toolTip'] === Config::MENU_ID) {
-                $level = 0;
-            }
+        $firstItem = reset($menu);
+        if ($level === 1 && $firstItem && $firstItem->toArray()['toolTip'] === Config::MENU_ID) {
+            $level = 0;
         }
 
         return [$menu, $level, $limit, $colBrakes];

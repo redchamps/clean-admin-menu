@@ -1,4 +1,8 @@
 <?php
+/**
+ * Copyright © RedChamps, All rights reserved.
+ * See LICENSE bundled with this library for license details.
+ */
 declare(strict_types=1);
 
 namespace RedChamps\CleanMenu\Plugin\Model;
@@ -22,7 +26,7 @@ final class MenuBuilderCommand
 
     public function afterExecute(AbstractCommand $subject, $result): array
     {
-        if (isset($result['module']) && empty($result['parent']) && !$this->isAllowed->isAllowed($result['module'])) {
+        if (isset($result['module']) && !isset($result['parent']) && !$this->isAllowed->isAllowed($result['module'])) {
             $result['parent'] = Config::MENU_ID;
         }
 
