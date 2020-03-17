@@ -36,19 +36,22 @@ class Data extends StructureData
     public function get($path = null, $default = null)
     {
         $data = parent::get($path, $default);
-
+        $thirdPartyTabs = [];
         if (isset($data['tabs'], $data['sections'])) {
             foreach ($data['sections'] as $sectionId => $section) {
                 $sectionTab = $section['tab'] ?? '';
                 if ($sectionTab && !$this->isAllowed->isAllowed($sectionTab)) {
-                    $data['sections'][$sectionId]['tab'] = 'extensions_list';
-
                     if (isset($data['tabs'][$sectionTab])) {
-                        $data['sections'][$sectionId]['tab_original'] = $data['tabs'][$sectionTab];
+                        $section['tab_original'] = $data['tabs'][$sectionTab];
                         unset($data['tabs'][$sectionTab]);
                     }
+                    $section['tab'] = 'extensions_list';
+                    $thirdPartyTabs[$sectionTab][$sectionId] = $section;
+                    unset($data['sections'][$sectionId]);
                 }
             }
+            $sequencedThirdPartySections = call_user_func_array('array_merge', $thirdPartyTabs);
+            $data['sections'] = array_merge($data['sections'], $sequencedThirdPartySections);
         }
 
         return $data;
