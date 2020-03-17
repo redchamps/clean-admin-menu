@@ -12,8 +12,8 @@ use Magento\Framework\App\Config\ScopeConfigInterface;
 final class Config
 {
     public const MENU_ID = 'RedChamps_CleanMenu::extensions';
-    private const CONFIG_PATH_MAGENTO_MARKETPLACE_ENABLED = 'clean_admin_menu/settings/enable_marketplace';
-    private const CONFIG_PATH_MAGENTO_MARKETPLACE_MOVED = 'clean_admin_menu/settings/move_marketplace';
+    private const CONFIG_PATH_MAGENTO_MARKETPLACE_ENABLED = 'clean_admin_menu/marketplace/enabled';
+    private const CONFIG_PATH_MAGENTO_MARKETPLACE_MOVED = 'clean_admin_menu/marketplace/move';
 
     /**
      * @var ScopeConfigInterface
