@@ -26,7 +26,19 @@ to a single tab named "**Extensions**" and place it after native Magento tabs.
 
 > composer require redchamps/module-clean-admin-menu
 
+## Configuration
+
+Various settings to tweak the extension behaviour are located under admin path
+
+> Store > Configuration > Extensions > RedChamps > Clean Admin Menu 
+
+## Contributions
+
 Contributions are more than welcome :-)
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](./LICENSE) details.
 
 Please visit our store https://redchamps.com for more free/paid extensions from us.
 
