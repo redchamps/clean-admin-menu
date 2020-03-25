@@ -13,6 +13,8 @@ use Magento\Framework\Config\CacheInterface;
 use Magento\Framework\Config\ScopeInterface;
 use Magento\Framework\Serialize\SerializerInterface;
 use RedChamps\CleanMenu\Api\IsAllowedInterface;
+use function array_merge;
+use function array_values;
 
 class Data extends StructureData
 {
@@ -36,8 +38,9 @@ class Data extends StructureData
     public function get($path = null, $default = null)
     {
         $data = parent::get($path, $default);
-        $thirdPartyTabs = [];
+
         if (isset($data['tabs'], $data['sections'])) {
+            $thirdPartyTabs = [];
             foreach ($data['sections'] as $sectionId => $section) {
                 $sectionTab = $section['tab'] ?? '';
                 if ($sectionTab && !$this->isAllowed->isAllowed($sectionTab)) {
@@ -50,8 +53,7 @@ class Data extends StructureData
                     unset($data['sections'][$sectionId]);
                 }
             }
-            $sequencedThirdPartySections = call_user_func_array('array_merge', $thirdPartyTabs);
-            $data['sections'] = array_merge($data['sections'], $sequencedThirdPartySections);
+            $data['sections'] = array_merge($data['sections'], array_merge(...array_values($thirdPartyTabs)));
         }
 
         return $data;
