@@ -100,6 +100,7 @@
     <type name="RedChamps\CleanMenu\Plugin\Model\MenuBuilderCommand">
         <arguments>
             <argument name="isAllowed" xsi:type="object">RedChamps\CleanMenu\Model\IsAllowedModule</argument>
+            <argument name="isAllowedMenuId" xsi:type="object">RedChamps\CleanMenu\Model\IsAllowedMenuId</argument>
         </arguments>
     </type>
     <type name="RedChamps\CleanMenu\Model\Config\Structure\Data">
