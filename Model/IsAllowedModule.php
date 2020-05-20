@@ -7,11 +7,14 @@ declare(strict_types=1);
 
 namespace RedChamps\CleanMenu\Model;
 
+use Magento\Framework\App\Config\ScopeConfigInterface;
 use RedChamps\CleanMenu\Api\IsAllowedInterface;
 
 final class IsAllowedModule implements IsAllowedInterface
 {
     private const MODULE_NAME = 'Magento_Marketplace';
+
+    private const CONFIG_PATH_MAGENTO_MARKETPLACE_MOVED = 'clean_admin_menu/marketplace/move';
 
     /**
      * @var IsAllowedInterface
@@ -19,16 +22,16 @@ final class IsAllowedModule implements IsAllowedInterface
     private $isAllowed;
 
     /**
-     * @var Config
+     * @var ScopeConfigInterface
      */
-    private $config;
+    private $scopeConfig;
 
     public function __construct(
         IsAllowedInterface $isAllowed,
-        Config $config
+        ScopeConfigInterface $scopeConfig
     ) {
         $this->isAllowed = $isAllowed;
-        $this->config = $config;
+        $this->scopeConfig = $scopeConfig;
     }
 
     public function isAllowed(string $name): bool
@@ -36,7 +39,7 @@ final class IsAllowedModule implements IsAllowedInterface
         $isAllowed = true;
 
         if ($name === self::MODULE_NAME) {
-            $isAllowed = !$this->config->isMagentoMarketplaceMoved();
+            $isAllowed = !$this->scopeConfig->isSetFlag(self::CONFIG_PATH_MAGENTO_MARKETPLACE_MOVED);
         }
 
         return $isAllowed && $this->isAllowed->isAllowed($name);
