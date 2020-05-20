@@ -8,34 +8,37 @@ declare(strict_types=1);
 namespace RedChamps\CleanMenu\Plugin\Model;
 
 use Magento\Backend\Model\Menu\Builder\AbstractCommand;
-use RedChamps\CleanMenu\Api\IsAllowedInterface;
 use RedChamps\CleanMenu\Model\Config;
+use RedChamps\CleanMenu\Model\IsAllowedMenuId;
+use RedChamps\CleanMenu\Model\IsAllowedModule;
 
 final class MenuBuilderCommand
 {
     /**
-     * @var IsAllowedInterface
+     * @var IsAllowedModule
      */
-    private $isAllowed;
+    private $isAllowedModule;
 
+    /**
+     * @var IsAllowedMenuId
+     */
     private $isAllowedMenuId;
 
     public function __construct(
-        IsAllowedInterface $isAllowed,
-        IsAllowedInterface $isAllowedMenuId
+        IsAllowedModule $isAllowedModule,
+        IsAllowedMenuId $isAllowedMenuId
     ) {
-        $this->isAllowed = $isAllowed;
+        $this->isAllowedModule = $isAllowedModule;
         $this->isAllowedMenuId = $isAllowedMenuId;
     }
 
     public function afterExecute(AbstractCommand $subject, $result): array
     {
-        if (
-            $this->isAllowedMenuId->isAllowed($result['id']) ||
+        if ((isset($result['id']) && $this->isAllowedMenuId->isAllowed($result['id'])) ||
             (
                 isset($result['module']) &&
                 !isset($result['parent']) &&
-                !$this->isAllowed->isAllowed($result['module'])
+                !$this->isAllowedModule->isAllowed($result['module'])
             )
         ) {
             $result['parent'] = Config::MENU_ID;
