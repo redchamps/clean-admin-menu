@@ -18,15 +18,26 @@ final class MenuBuilderCommand
      */
     private $isAllowed;
 
+    private $isAllowedMenuId;
+
     public function __construct(
-        IsAllowedInterface $isAllowed
+        IsAllowedInterface $isAllowed,
+        IsAllowedInterface $isAllowedMenuId
     ) {
         $this->isAllowed = $isAllowed;
+        $this->isAllowedMenuId = $isAllowedMenuId;
     }
 
     public function afterExecute(AbstractCommand $subject, $result): array
     {
-        if (isset($result['module']) && !isset($result['parent']) && !$this->isAllowed->isAllowed($result['module'])) {
+        if (
+            $this->isAllowedMenuId->isAllowed($result['id']) ||
+            (
+                isset($result['module']) &&
+                !isset($result['parent']) &&
+                !$this->isAllowed->isAllowed($result['module'])
+            )
+        ) {
             $result['parent'] = Config::MENU_ID;
         }
 
