@@ -7,13 +7,13 @@ declare(strict_types=1);
 
 namespace RedChamps\CleanMenu\Model\Config\Structure;
 
-use Magento\Config\Model\Config\ScopeDefiner;
 use Magento\Config\Model\Config\Structure\Data as StructureData;
 use Magento\Config\Model\Config\Structure\Reader;
 use Magento\Framework\Config\CacheInterface;
 use Magento\Framework\Config\ScopeInterface;
 use Magento\Framework\Serialize\SerializerInterface;
 use RedChamps\CleanMenu\Api\IsAllowedInterface;
+use function ucfirst;
 
 class Data extends StructureData
 {
@@ -22,10 +22,7 @@ class Data extends StructureData
      */
     private $isAllowed;
 
-    protected $scope;
-
     public function __construct(
-        ScopeDefiner $scopeDefiner,
         Reader $reader,
         ScopeInterface $configScope,
         CacheInterface $cache,
@@ -33,7 +30,6 @@ class Data extends StructureData
         SerializerInterface $serializer,
         IsAllowedInterface $isAllowed
     ) {
-        $this->scope = $scopeDefiner->getScope();
         $this->isAllowed = $isAllowed;
         parent::__construct($reader, $configScope, $cache, $cacheId, $serializer);
     }
@@ -61,9 +57,8 @@ class Data extends StructureData
         return $data;
     }
 
-    protected function isSectionVisible($section)
+    private function isSectionVisible($section): bool
     {
-        $scope = "showIn" . ucfirst($this->scope);
-        return isset($section[$scope]) && $section[$scope];
+        return $section['showIn' . ucfirst($this->_configScope->getCurrentScope())] ?? false;
     }
 }
