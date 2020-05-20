@@ -1,4 +1,8 @@
 <?php
+/**
+ * Copyright © RedChamps, All rights reserved.
+ * See LICENSE bundled with this library for license details.
+ */
 declare(strict_types=1);
 
 namespace RedChamps\CleanMenu\Plugin\Block;
@@ -9,11 +13,16 @@ use function reset;
 
 final class MenuBlock
 {
-    public function beforeRenderNavigation(Menu $subject, $menu, $level = 0, $limit = 0, $colBrakes = [])
-    {
+    public function beforeRenderNavigation(
+        Menu $subject,
+        $menu,
+        int $level = 0,
+        int $limit = 0,
+        $colBrakes = []
+    ): array {
         $firstItem = reset($menu);
-        if ($firstItem && $firstItem->toArray()['toolTip'] === Config::MENU_ID) {
-            $level = $level === 1 ? 0 : $level;
+        if ($level === 1 && $firstItem && $firstItem->toArray()['toolTip'] === Config::MENU_ID) {
+            $level = 0;
         }
 
         return [$menu, $level, $limit, $colBrakes];

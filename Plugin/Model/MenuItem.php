@@ -1,4 +1,8 @@
 <?php
+/**
+ * Copyright © RedChamps, All rights reserved.
+ * See LICENSE bundled with this library for license details.
+ */
 declare(strict_types=1);
 
 namespace RedChamps\CleanMenu\Plugin\Model;
@@ -14,7 +18,7 @@ final class MenuItem
         if ($subject->getId() === Config::MENU_ID) {
             $firstItem = reset($result);
             if ($firstItem && $firstItem->getId()) {
-                $firstItem->setTooltip($subject->getId());
+                $firstItem->setTooltip(Config::MENU_ID);
             }
         }
 

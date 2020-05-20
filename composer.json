@@ -2,14 +2,55 @@
     "name": "redchamps/module-clean-admin-menu",
     "description": "It will merge all third party extensions menu items to single menu item named 'Extensions'.",
     "type": "magento2-module",
-    "version": "1.0.2",
+    "keywords": [
+        "php",
+        "magento",
+        "magento2",
+        "menu",
+        "admin",
+        "ui",
+        "settings",
+        "config"
+    ],
+    "homepage": "https://redchamps.com/clean-admin-menu-magento-2-extension.html",
+    "readme": "README.md",
+    "license": [
+        "MIT"
+    ],
+    "authors": [
+        {
+            "name": "RedChamps",
+            "email": "hello@redchamps.com",
+            "homepage": "https://redchamps.com/",
+            "role": "maintainer"
+        },
+        {
+            "name": "Ravinder",
+            "email": "rav@redchamps.com",
+            "homepage": "https://twitter.com/_iamRav",
+            "role": "maintainer"
+        },
+        {
+            "name": "Thomas Klein",
+            "email": "thomasklein876@gmail.com",
+            "homepage": "https://www.linkedin.com/in/thomas-klein/",
+            "role": "contributor"
+        }
+    ],
+    "support": {
+        "source": "https://github.com/redchamps/clean-admin-menu/",
+        "issues": "https://github.com/redchamps/clean-admin-menu/issues/"
+    },
     "require": {
+        "magento/framework": "*",
         "magento/module-backend": "*",
         "magento/module-config": "*"
     },
-    "license": [
-        "OSL-3.0",
-        "AFL-3.0"
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://repo.magento.com/"
+        }
     ],
     "autoload": {
         "files": [

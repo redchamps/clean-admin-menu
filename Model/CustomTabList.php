@@ -1,9 +1,14 @@
 <?php
+/**
+ * Copyright © RedChamps, All rights reserved.
+ * See LICENSE bundled with this library for license details.
+ */
 declare(strict_types=1);
 
 namespace RedChamps\CleanMenu\Model;
 
 use Magento\Config\Model\Config\Structure\Data;
+use RedChamps\CleanMenu\Spi\ListInterface;
 use function array_column;
 use function array_combine;
 use function array_flip;

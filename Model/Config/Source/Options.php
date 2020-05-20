@@ -1,11 +1,15 @@
 <?php
+/**
+ * Copyright © RedChamps, All rights reserved.
+ * See LICENSE bundled with this library for license details.
+ */
 declare(strict_types=1);
 
 namespace RedChamps\CleanMenu\Model\Config\Source;
 
 use Magento\Framework\Data\OptionSourceInterface;
 use Magento\Framework\Phrase;
-use RedChamps\CleanMenu\Model\ListInterface;
+use RedChamps\CleanMenu\Spi\ListInterface;
 
 final class Options implements OptionSourceInterface
 {

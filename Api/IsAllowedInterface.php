@@ -5,6 +5,12 @@
  */
 declare(strict_types=1);
 
-use Magento\Framework\Component\ComponentRegistrar;
+namespace RedChamps\CleanMenu\Api;
 
-ComponentRegistrar::register(ComponentRegistrar::MODULE, 'RedChamps_CleanMenu', __DIR__);
+/**
+ * @api
+ */
+interface IsAllowedInterface
+{
+    public function isAllowed(string $name): bool;
+}

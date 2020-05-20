@@ -1,4 +1,8 @@
 <?php
+/**
+ * Copyright © RedChamps, All rights reserved.
+ * See LICENSE bundled with this library for license details.
+ */
 declare(strict_types=1);
 
 namespace RedChamps\CleanMenu\Plugin\Model;
@@ -9,12 +13,7 @@ use RedChamps\CleanMenu\Model\Config;
 
 final class MenuBuilder
 {
-    /**
-     * @param Builder $subject
-     * @param Menu $result
-     * @return Menu
-     */
-    public function afterGetResult(Builder $subject, $result): Menu
+    public function afterGetResult(Builder $subject, Menu $result): Menu
     {
         if ($result && $result->get(Config::MENU_ID) && !$result->get(Config::MENU_ID)->hasChildren()) {
             $result->remove(Config::MENU_ID);
