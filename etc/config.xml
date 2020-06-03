@@ -11,7 +11,7 @@
             <settings>
                 <allowed_modules><![CDATA[]]></allowed_modules>
                 <rule_modules>deniedByDefault</rule_modules>
-                <allowed_tabs>yotpo,ddg_automation</allowed_tabs>
+                <allowed_tabs>ddg_automation</allowed_tabs>
                 <rule_tabs>deniedByDefault</rule_tabs>
             </settings>
             <marketplace>

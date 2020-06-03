@@ -13,7 +13,6 @@ use Magento\Framework\Config\CacheInterface;
 use Magento\Framework\Config\ScopeInterface;
 use Magento\Framework\Serialize\SerializerInterface;
 use RedChamps\CleanMenu\Api\IsAllowedInterface;
-use function ucfirst;
 
 class Data extends StructureData
 {
@@ -42,7 +41,7 @@ class Data extends StructureData
             foreach ($data['sections'] as $sectionId => $section) {
                 $sectionTab = $section['tab'] ?? '';
                 if ($sectionTab && !$this->isAllowed->isAllowed($sectionTab)) {
-                    if (isset($data['tabs'][$sectionTab]) && $this->isSectionVisible($section)) {
+                    if (isset($data['tabs'][$sectionTab])) {
                         $section['tab_original'] = $data['tabs'][$sectionTab];
                         unset($data['tabs'][$sectionTab]);
                     }
@@ -55,10 +54,5 @@ class Data extends StructureData
         }
 
         return $data;
-    }
-
-    private function isSectionVisible($section): bool
-    {
-        return $section['showIn' . ucfirst($this->_configScope->getCurrentScope())] ?? false;
     }
 }
