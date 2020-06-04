@@ -54,6 +54,7 @@
                     <label>Status</label>
                     <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
                     <backend_model>RedChamps\CleanMenu\Model\Config\Backend\Modules</backend_model>
+                    <if_module_enabled>Magento_Marketplace</if_module_enabled>
                     <config_path>clean_admin_menu/marketplace/enabled</config_path>
                     <comment>We will remove the Magento Marketplace menu item if disabled.</comment>
                 </field>
@@ -64,6 +65,7 @@
                     <label>Move</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                     <backend_model>RedChamps\CleanMenu\Model\Config\Backend\Modules</backend_model>
+                    <if_module_enabled>Magento_Marketplace</if_module_enabled>
                     <config_path>clean_admin_menu/marketplace/move</config_path>
                     <comment>We will move the Magento Marketplace menu item to the "extensions" menu.</comment>
                 </field>
@@ -73,6 +75,7 @@
                 <field id="allowed_menu_ids" type="textarea" translate="label comment" showInDefault="1" showInWebsite="0" showInStore="0" sortOrder="10" canRestore="0">
                     <label>Move Menu ID's</label>
                     <backend_model>RedChamps\CleanMenu\Model\Config\Backend\Modules</backend_model>
+                    <config_path>clean_admin_menu/developer/allowed_menu_ids</config_path>
                     <comment>Enter each menu ID in next line. We will move the specified menu id's under "Extensions" menu.</comment>
                 </field>
             </group>
