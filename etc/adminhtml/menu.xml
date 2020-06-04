@@ -8,6 +8,6 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
     <menu>
         <add id="RedChamps_CleanMenu::extensions" title="Extensions" translate="title" module="RedChamps_CleanMenu" sortOrder="60" dependsOnModule="RedChamps_CleanMenu" resource="RedChamps_CleanMenu::extensions"/>
-        <update id="Magento_Marketplace::partners" dependsOnConfig="clean_admin_menu/marketplace/enabled" dependsOnModule="Magento_Marketplace"/>
+        <update id="Magento_Marketplace::partners" dependsOnConfig="clean_admin_menu/marketplace/enabled" dependsOnModule="Magento_Marketplace" title="Find Partners &amp; Extensions" translate="title" resource="Magento_Marketplace::partners"/>
     </menu>
 </config>
