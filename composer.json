@@ -44,7 +44,8 @@
     "require": {
         "magento/framework": "*",
         "magento/module-backend": "*",
-        "magento/module-config": "*"
+        "magento/module-config": "*",
+        "php": "^7.1.0"
     },
     "repositories": [
         {
