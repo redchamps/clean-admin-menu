@@ -43,7 +43,6 @@ class Data extends StructureData
                 if ($sectionTab && !$this->isAllowed->isAllowed($sectionTab)) {
                     if (isset($data['tabs'][$sectionTab])) {
                         $section['tab_original'] = $data['tabs'][$sectionTab];
-                        unset($data['tabs'][$sectionTab]);
                     }
                     $section['tab'] = 'extensions_list';
                     $thirdPartyTabs[$sectionTab][$sectionId] = $section;
