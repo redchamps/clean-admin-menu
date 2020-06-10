@@ -47,7 +47,7 @@ final class RuleConfig implements RuleConfigInterface
     public function getRuleId(): string
     {
         return $this->configCache['ruleId'] ??
-            $this->configCache['ruleId'] = (string)$this->scopeConfig->getValue($this->configPaths['ruleId']);
+            $this->configCache['ruleId'] = (string) $this->scopeConfig->getValue($this->configPaths['ruleId']);
     }
 
     public function getItems(): array
