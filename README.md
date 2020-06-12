@@ -50,4 +50,6 @@ If any extension menu item is not moved under "Extensions" menu then just find i
 
 This project is licensed under the MIT License - see the [LICENSE](./LICENSE) details.
 
-Please visit our store https://redchamps.com for more free/paid extensions from us.
+## ADS
+
+Please visit our [store](https://redchamps.com) for more free/paid extensions from us.

@@ -20,18 +20,33 @@ final class IsAllowedStrategy implements IsAllowedInterface
      */
     private $isAllowed;
 
+    /**
+     * @var RuleFactory
+     */
+    private $ruleFactory;
+
+    /**
+     * @var RuleConfigInterface
+     */
+    private $config;
+
     public function __construct(
         RuleFactory $ruleFactory,
         RuleConfigInterface $config
     ) {
-        $this->isAllowed = $ruleFactory->create(
-            $config->getRuleId(),
-            ['defaultItems' => $config->getDefaultItems(), 'items' => $config->getItems()]
-        );
+        $this->ruleFactory = $ruleFactory;
+        $this->config = $config;
     }
 
     public function isAllowed(string $name): bool
     {
+        if (!$this->isAllowed) {
+            $this->isAllowed = $this->ruleFactory->create(
+                $this->config->getRuleId(),
+                ['defaultItems' => $this->config->getDefaultItems(), 'items' => $this->config->getItems()]
+            );
+        }
+
         return $this->isAllowed->isAllowed($name);
     }
 }
