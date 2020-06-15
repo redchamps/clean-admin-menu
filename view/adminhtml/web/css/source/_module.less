@@ -89,12 +89,20 @@
 .rc-section-title {
   strong {
     color: #ec5102;
-    padding: 0 0 6px 8px !important;
+    padding: 0 0 8px 8px !important;
   }
-  margin: 15px 0;
 }
 .rc-section-title._active {
-  border: none;
+    border: none;
+}
+#system_config_tabs .rc-section-title._collapsed._show ._collapsible:after {
+    content: '\e62b';
+}
+#system_config_tabs .rc-section-title ._collapsible::after {
+    content: '\e628';
+}
+#system_config_tabs .rc-section-title .admin__page-nav-title.title._collapsible {
+    background: #fff;
 }
 //extension specific rules
 #nav {

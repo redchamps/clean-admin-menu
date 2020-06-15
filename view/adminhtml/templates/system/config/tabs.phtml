@@ -3,21 +3,23 @@
  * Copyright © RedChamps, All rights reserved.
  * See LICENSE bundled with this library for license details.
  */
+use Magento\Config\Block\System\Config\Tabs;
+use Magento\Config\Model\Config\Structure\Element\Section;
+use Magento\Config\Model\Config\Structure\Element\Tab;
 
-/** @var $block \Magento\Config\Block\System\Config\Tabs */
+/** @var $block Tabs */
 ?>
 <?php if ($block->getTabs()) : ?>
     <div id="<?= $block->escapeHtmlAttr($block->getId()) ?>" class="config-nav">
         <?php
-        /** @var $_tab \Magento\Config\Model\Config\Structure\Element\Tab */
+        /** @var $_tab Tab */
         foreach ($block->getTabs() as $_tab) :
             $activeCollapsible = false;
-            foreach ($_tab->getChildren() as $_section) {
-                if ($block->isSectionActive($_section)) {
+            foreach ($_tab->getChildren() as $_section) :
+                if ($block->isSectionActive($_section)) :
                     $activeCollapsible = true;
-                }
-            } ?>
-
+                endif;
+            endforeach; ?>
             <div class="config-nav-block admin__page-nav _collapsed
                 <?php if ($_tab->getClass()) : ?>
                     <?= $block->escapeHtmlAttr($_tab->getClass()) ?>
@@ -30,39 +32,54 @@
                 <div class="admin__page-nav-title title _collapsible" data-role="title">
                     <strong><?= $block->escapeHtml($_tab->getLabel()) ?></strong>
                 </div>
-
                 <ul class="admin__page-nav-items items" data-role="content">
-                    <?php
-                    $_iterator = 1;
-                    $origTabs = [];
-
-                    /** @var $_section \Magento\Config\Model\Config\Structure\Element\Section */
-                    foreach ($_tab->getChildren() as $_section) : ?>
-                    <?php if ($_section->getAttribute('tab_original') && !isset($origTabs[$_section->getAttribute('tab_original')['id']])): ?>
-                        <?php $origTabs[$_section->getAttribute('tab_original')['id']] = true; ?>
-                        <?php $tabOriginal = $_section->getAttribute('tab_original'); ?>
-                        <li class="admin__page-nav-item item rc-section-title
-                            <?= isset($tabOriginal['class']) ? $block->escapeHtml($tabOriginal['class']) : '' ?>
-                            <?php if ($block->isSectionActive($_section)) : ?> _active<?php endif ?>
-                            <?= $_tab->getChildren()->isLast($_section) ? ' _last' : '' ?>">
-                            <strong>
-                                <span><?= $tabOriginal['label'] ?></span>
-                            </strong>
-                        </li>
-                    <?php endif;?>
-                        <li class="admin__page-nav-item item
-                            <?= $block->escapeHtml($_section->getClass()) ?>
-                            <?php if ($block->isSectionActive($_section)) : ?> _active<?php endif ?>
-                            <?= $_tab->getChildren()->isLast($_section) ? ' _last' : '' ?>">
-                            <a href="<?= $block->escapeUrl($block->getSectionUrl($_section)) ?>"
-                               class="admin__page-nav-link item-nav">
-                                <span><?= $block->escapeHtml($_section->getLabel()) ?></span>
-                            </a>
-                        </li>
-                        <?php $_iterator++; ?>
+                    <?php $_iterator = 1; $origTabs = []; ?>
+                    <?php /** @var $_section Section */
+                    foreach ($_tab->getChildren() as $_section):?>
+                        <?php if ($_section->getAttribute('tab_original')): ?>
+                            <?php $tabOriginal = $_section->getAttribute('tab_original'); ?>
+                            <?php if (!isset($origTabs[$_section->getAttribute('tab_original')['id']])):?>
+                                <?php if($_iterator > 1):?>
+                                        </ul>
+                                    </div>
+                                <?php endif ?>
+                                <?php $origTabs[$_section->getAttribute('tab_original')['id']] = true; ?>
+                                <div data-role="ext-tabs" class="<?php if ($_tab->getClass()) : ?>
+                                        <?= $block->escapeHtmlAttr($_tab->getClass()) ?>
+                                        <?php endif ?> rc-section-title _collapsed">
+                                        <div class="admin__page-nav-title title _collapsible" data-role="title">
+                                            <strong><?= $tabOriginal['label'] ?></strong>
+                                        </div>
+                                        <ul class="admin__page-nav-items items" data-role="content">
+                            <?php endif ?>
+                                        <li class="admin__page-nav-item item
+                                            <?= $block->escapeHtml($_section->getClass()) ?>
+                                            <?php if ($block->isSectionActive($_section)) : ?> _active<?php endif ?>
+                                            <?= $_tab->getChildren()->isLast($_section) ? ' _last' : '' ?>">
+                                            <a href="<?= $block->escapeUrl($block->getSectionUrl($_section)) ?>"
+                                                class="admin__page-nav-link item-nav">
+                                                <span><?= $block->escapeHtml($_section->getLabel()) ?></span>
+                                            </a>
+                                        </li>
+                                        <?php $_iterator++; ?>
+                                <?php if($_tab->getChildren()->isLast($_section)):?>
+                                    </ul>
+                                </div>
+                            <?php endif ?>
+                        <?php else:?>
+                            <li class="admin__page-nav-item item
+                                <?= $block->escapeHtml($_section->getClass()) ?>
+                                <?php if ($block->isSectionActive($_section)) : ?> _active<?php endif ?>
+                                <?= $_tab->getChildren()->isLast($_section) ? ' _last' : '' ?>">
+                                <a href="<?= $block->escapeUrl($block->getSectionUrl($_section)) ?>"
+                                   class="admin__page-nav-link item-nav">
+                                    <span><?= $block->escapeHtml($_section->getLabel()) ?></span>
+                                </a>
+                            </li>
+                            <?php $_iterator++; ?>
+                        <?php endif;?>
                     <?php endforeach; ?>
                 </ul>
-
             </div>
         <?php endforeach; ?>
     </div>
