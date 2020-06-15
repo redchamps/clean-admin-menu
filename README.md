@@ -46,6 +46,8 @@ If any extension menu item is not moved under "Extensions" menu then just find i
 
 - Thomas Klein [Contributor] [![Twitter Follow](https://img.shields.io/twitter/follow/lead_dave.svg?style=social)](https://twitter.com/lead_dave)
 
+- Prince Antil [Contributor] [![Twitter Follow](https://img.shields.io/twitter/follow/prince_antil.svg?style=social)](https://twitter.com/prince_antil)
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](./LICENSE) details.

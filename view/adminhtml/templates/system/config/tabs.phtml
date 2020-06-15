@@ -39,7 +39,7 @@ use Magento\Config\Model\Config\Structure\Element\Tab;
                         <?php if ($_section->getAttribute('tab_original')): ?>
                             <?php $tabOriginal = $_section->getAttribute('tab_original'); ?>
                             <?php if (!isset($origTabs[$_section->getAttribute('tab_original')['id']])):?>
-                                <?php if($_iterator > 1):?>
+                                <?php if ($_iterator > 1):?>
                                         </ul>
                                     </div>
                                 <?php endif ?>
@@ -48,7 +48,7 @@ use Magento\Config\Model\Config\Structure\Element\Tab;
                                         <?= $block->escapeHtmlAttr($_tab->getClass()) ?>
                                         <?php endif ?> rc-section-title _collapsed">
                                         <div class="admin__page-nav-title title _collapsible" data-role="title">
-                                            <strong><?= $tabOriginal['label'] ?></strong>
+                                            <strong><?= $tabOriginal['label'] ? $tabOriginal['label'] : $tabOriginal['id'] ?></strong>
                                         </div>
                                         <ul class="admin__page-nav-items items" data-role="content">
                             <?php endif ?>
@@ -62,7 +62,7 @@ use Magento\Config\Model\Config\Structure\Element\Tab;
                                             </a>
                                         </li>
                                         <?php $_iterator++; ?>
-                                <?php if($_tab->getChildren()->isLast($_section)):?>
+                                <?php if ($_tab->getChildren()->isLast($_section)):?>
                                     </ul>
                                 </div>
                             <?php endif ?>
