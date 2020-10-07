@@ -46,7 +46,7 @@ use Magento\Config\Model\Config\Structure\Element\Tab;
                                 <?php $origTabs[$_section->getAttribute('tab_original')['id']] = true; ?>
                                 <div data-role="ext-tabs" class="<?php if ($_tab->getClass()) : ?>
                                         <?= $block->escapeHtmlAttr($_tab->getClass()) ?>
-                                        <?php endif ?> rc-section-title _collapsed">
+                                        <?php endif ?> rc-section-title _collapsed _hide">
                                         <div class="admin__page-nav-title title _collapsible" data-role="title">
                                             <strong><?= $tabOriginal['label'] ? $tabOriginal['label'] : $tabOriginal['id'] ?></strong>
                                         </div>
@@ -65,6 +65,12 @@ use Magento\Config\Model\Config\Structure\Element\Tab;
                                 <?php if ($_tab->getChildren()->isLast($_section)):?>
                                     </ul>
                                 </div>
+                            <div class="powered-by">
+                                <span>
+                                    Section powered by
+                                    <a href="https://redchamps.com?utm_source=clean-admin-menu-tab" target="_blank">redChamps</a>
+                                </span>
+                            </div>
                             <?php endif ?>
                         <?php else:?>
                             <li class="admin__page-nav-item item

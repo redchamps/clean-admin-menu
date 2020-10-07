@@ -1,7 +1,7 @@
 require([
     'jquery',
     'collapsible',
-    'domReady'
+    'domReady!'
 ], function ($) {
     $('[data-role=ext-tabs]')
         .collapsible({

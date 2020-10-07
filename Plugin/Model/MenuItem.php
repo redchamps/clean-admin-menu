@@ -24,4 +24,16 @@ final class MenuItem
 
         return $result;
     }
+
+    /*
+     * Force allowed ACL for Extensions menu
+     * */
+    public function afterIsAllowed(Item $subject, $result)
+    {
+        $menuItemData = $subject->toArray();
+        if(isset($menuItemData["resource"]) && $menuItemData["resource"] == Config::MENU_ID) {
+            return true;
+        }
+        return $result;
+    }
 }

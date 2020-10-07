@@ -4,93 +4,117 @@
 //  */
 
 #menu-redchamps-cleanmenu-extensions {
-  .submenu {
+    .submenu {
+        .submenu-title {
+            margin-bottom: 4px;
+        }
+        .powered-by {
+            color: white;
+            margin-left: 3rem;
+            font-size: 11px;
+            margin-bottom: 3rem;
+            a {
+                color: rgb(237, 51, 54);
+                font-weight: bold;
+                &:after {
+                    color: #ffffff;
+                }
+            }
+        }
+        >ul[role='menubar'] {
+            min-height: 720px;
+        }
+        .level-0 {
+            >a {
+                &:before {
+                    float: left;
+                    margin-right: 10px;
+                    width: 20px;
+                    display: table;
+                    background-size: 20px;
+                    background-position: top;
+                    font-size: 2.2rem;
+                }
+                display: block;
+                width: 99%;
+                min-height: 0;
+                margin: .7rem 0;
+                padding: 1.25rem 1rem 1.25rem 3rem;
+                font-weight: 600;
+                font-size: 1.6rem;
+                text-align: left;
+                color: #fff;
+                text-transform: none;
+                &:hover {
+                    background-color: #524d49;
+                }
+            }
+        }
+        .column {
+            .parent {
+                margin-bottom: 0;
+            }
+        }
+        .parent {
+            margin-bottom: 0.5rem;
+        }
+    }
     .level-0 {
-      >a {
+        &:first-child {
+            >a {
+                &:after {
+                    content: '';
+                    display: none;
+                }
+            }
+        }
+    }
+    .item-container {
+        .submenu {
+            transform: none;
+            opacity: 1;
+            transition-property: opacity;
+        }
+    }
+    .item-container._show {
+        .submenu {
+            opacity: 1;
+        }
+    }
+    >a {
         &:before {
-          content: '';
-          display: none;
+            content: '\e612';
         }
-        display: block;
-        width: 99%;
-        min-height: 0;
-        margin: .7rem 0;
-        padding: 1.25rem 1rem 1.25rem 3rem;
-        font-weight: 600;
-        font-size: 1.6rem;
-        text-align: left;
-        color: #a79d95;
-        text-transform: none;
-        &:hover {
-          background-color: #524d49;
-        }
-      }
     }
-    .column {
-      .parent {
-        margin-bottom: 0;
-      }
-    }
-    .parent {
-      margin-bottom: 0.5rem;
-    }
-  }
-  .level-0 {
-    &:first-child {
-      >a {
-        &:after {
-          content: '';
-          display: none;
-        }
-      }
-    }
-  }
-  .item-container {
-    .submenu {
-      transform: none;
-      opacity: 0;
-      transition-property: opacity;
-    }
-  }
-  .item-container._show {
-    .submenu {
-      opacity: 1;
-    }
-  }
-  >a {
-    &:before {
-      content: '\e612';
-    }
-  }
 }
 .admin__menu {
-  .submenu {
-    .column {
-      &:only-of-type {
-        .submenu-group-title {
-          display: block !important;
-        }
-      }
-    }
     .submenu {
-      .submenu-title {
-        height: 60px;
-      }
+        .column {
+            &:only-of-type {
+                .submenu-group-title {
+                    display: block !important;
+                }
+            }
+        }
+        .submenu {
+            .submenu-title {
+                height: 60px;
+            }
+        }
     }
-  }
-  .level-0 {
-    >.submenu {
-      .submenu {
-        width: auto !important;
-      }
+    .level-0 {
+        >.submenu {
+            .submenu {
+                width: auto !important;
+            }
+        }
     }
-  }
 }
 .rc-section-title {
-  strong {
-    color: #ec5102;
-    padding: 0 0 8px 8px !important;
-  }
+    strong {
+        color: #ec5102;
+        padding: 0 0 8px 8px !important;
+    }
 }
 .rc-section-title._active {
     border: none;
@@ -104,13 +128,24 @@
 #system_config_tabs .rc-section-title .admin__page-nav-title.title._collapsible {
     background: #fff;
 }
+.rc-cam-tab .powered-by {
+    padding: 10px;
+    span {
+        font-size: 11px;
+        float: right;
+        a {
+            color: #ED3336;
+            font-weight: bold;
+        }
+    }
+}
 //extension specific rules
 #nav {
-  li.item-weltpixel {
-    >a {
-      >span {
-        font-size: inherit !important;
-      }
+    li.item-weltpixel {
+        >a {
+            >span {
+                font-size: inherit !important;
+            }
+        }
     }
-  }
 }

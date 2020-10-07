@@ -23,7 +23,7 @@
             <argument name="structureData" xsi:type="object">RedChamps\CleanMenu\Model\Config\Structure\Data</argument>
         </arguments>
     </type>
-    <virtualType name="RedChamps\CleanMenu\Model\Config\Backend\Modules" type="RedChamps\CleanMenu\Model\Config\Backend\Cache">
+    <type name="RedChamps\CleanMenu\Model\Config\Backend\Cache">
         <arguments>
             <argument name="data" xsi:type="array">
                 <item name="cache_tags" xsi:type="array">
@@ -31,7 +31,7 @@
                 </item>
             </argument>
         </arguments>
-    </virtualType>
+    </type>
     <virtualType name="RedChamps\CleanMenu\Model\Config\Source\Modules" type="RedChamps\CleanMenu\Model\Config\Source\Options">
         <arguments>
             <argument name="list" xsi:type="object">RedChamps\CleanMenu\Model\CustomModuleList</argument>

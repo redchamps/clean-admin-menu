@@ -13,6 +13,8 @@ use function reset;
 
 final class MenuBlock
 {
+    const MAX_ITEMS = 10;
+
     public function beforeRenderNavigation(
         Menu $subject,
         $menu,
@@ -23,6 +25,20 @@ final class MenuBlock
         $firstItem = reset($menu);
         if ($level === 1 && $firstItem && $firstItem->toArray()['toolTip'] === Config::MENU_ID) {
             $level = 0;
+            $limit = self::MAX_ITEMS;
+            if (is_array($colBrakes)) {
+                foreach ($colBrakes as $key => $colBrake) {
+                    if (isset($colBrake['colbrake'])
+                        && $colBrake['colbrake']
+                    ) {
+                        $colBrakes[$key]['colbrake'] = false;
+                    }
+
+                    if (isset($colBrake['colbrake']) && (($key - 1) % $limit) === 0) {
+                        $colBrakes[$key]['colbrake'] = true;
+                    }
+                }
+            }
         }
 
         return [$menu, $level, $limit, $colBrakes];

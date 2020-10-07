@@ -15,7 +15,21 @@ final class MenuBuilder
 {
     public function afterGetResult(Builder $subject, Menu $result): Menu
     {
-        if ($result && $result->get(Config::MENU_ID) && !$result->get(Config::MENU_ID)->hasChildren()) {
+        $shouldRemoveMenu = false;
+        if ($result && $result->get(Config::MENU_ID) &&
+            !$result->get(Config::MENU_ID)->hasChildren()
+        ) {
+            $shouldRemoveMenu = true;
+        } elseif ($result && $result->get(Config::MENU_ID)) {
+            foreach ($result->get(Config::MENU_ID)->getChildren() as $child) {
+                $shouldRemoveMenu = false;
+                if ($child->isAllowed()) {
+                    break;
+                }
+                $shouldRemoveMenu = true;
+            }
+        }
+        if($shouldRemoveMenu) {
             $result->remove(Config::MENU_ID);
         }
 
