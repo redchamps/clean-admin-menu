@@ -23,15 +23,6 @@
             <argument name="structureData" xsi:type="object">RedChamps\CleanMenu\Model\Config\Structure\Data</argument>
         </arguments>
     </type>
-    <type name="RedChamps\CleanMenu\Model\Config\Backend\Cache">
-        <arguments>
-            <argument name="data" xsi:type="array">
-                <item name="cache_tags" xsi:type="array">
-                    <item name="admin_menu" xsi:type="const">Magento\Backend\Block\Menu::CACHE_TAGS</item>
-                </item>
-            </argument>
-        </arguments>
-    </type>
     <virtualType name="RedChamps\CleanMenu\Model\Config\Source\Modules" type="RedChamps\CleanMenu\Model\Config\Source\Options">
         <arguments>
             <argument name="list" xsi:type="object">RedChamps\CleanMenu\Model\CustomModuleList</argument>
@@ -99,7 +90,7 @@
     </type>
     <type name="RedChamps\CleanMenu\Plugin\Model\MenuBuilderCommand">
         <arguments>
-            <argument name="isAllowed" xsi:type="object">RedChamps\CleanMenu\Model\IsAllowedModule</argument>
+            <argument name="isAllowedModule" xsi:type="object">RedChamps\CleanMenu\Model\IsAllowedModule</argument>
             <argument name="isAllowedMenuId" xsi:type="object">RedChamps\CleanMenu\Model\IsAllowedMenuId</argument>
         </arguments>
     </type>
