@@ -22,7 +22,7 @@
                 <field id="allowed_modules" type="multiselect" translate="label comment" showInDefault="1" showInWebsite="0" showInStore="0" sortOrder="10" canRestore="1">
                     <label>Modules in menu</label>
                     <source_model>RedChamps\CleanMenu\Model\Config\Source\Modules</source_model>
-                    <backend_model>RedChamps\CleanMenu\Model\Config\Backend\Cache</backend_model>
+                    <backend_model>RedChamps\CleanMenu\Model\Config\Backend\Modules</backend_model>
                     <can_be_empty>1</can_be_empty>
                     <config_path>clean_admin_menu/settings/allowed_modules</config_path>
                     <comment>We will allow the selected modules to have their own menus if they have their own.</comment>
@@ -30,7 +30,7 @@
                 <field id="rule_modules" type="select" translate="label comment" showInDefault="1" showInWebsite="0" showInStore="0" sortOrder="20" canRestore="1">
                     <label>Rule</label>
                     <source_model>RedChamps\CleanMenu\Model\Config\Source\Rules</source_model>
-                    <backend_model>RedChamps\CleanMenu\Model\Config\Backend\Cache</backend_model>
+                    <backend_model>RedChamps\CleanMenu\Model\Config\Backend\Modules</backend_model>
                     <config_path>clean_admin_menu/settings/rule_modules</config_path>
                     <comment>We will change the behavior of the allowed module list.</comment>
                 </field>
@@ -53,7 +53,7 @@
                 <field id="enabled" type="select" translate="label comment" showInDefault="1" showInWebsite="0" showInStore="0" sortOrder="10" canRestore="1">
                     <label>Status</label>
                     <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
-                    <backend_model>RedChamps\CleanMenu\Model\Config\Backend\Cache</backend_model>
+                    <backend_model>RedChamps\CleanMenu\Model\Config\Backend\Modules</backend_model>
                     <if_module_enabled>Magento_Marketplace</if_module_enabled>
                     <config_path>clean_admin_menu/marketplace/enabled</config_path>
                     <comment>We will remove the Magento Marketplace menu item if disabled.</comment>
@@ -64,7 +64,7 @@
                     </depends>
                     <label>Move</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                    <backend_model>RedChamps\CleanMenu\Model\Config\Backend\Cache</backend_model>
+                    <backend_model>RedChamps\CleanMenu\Model\Config\Backend\Modules</backend_model>
                     <if_module_enabled>Magento_Marketplace</if_module_enabled>
                     <config_path>clean_admin_menu/marketplace/move</config_path>
                     <comment>We will move the Magento Marketplace menu item to the "extensions" menu.</comment>
@@ -74,7 +74,7 @@
                 <label>Developer Tools</label>
                 <field id="allowed_menu_ids" type="textarea" translate="label comment" showInDefault="1" showInWebsite="0" showInStore="0" sortOrder="10" canRestore="0">
                     <label>Move Menu ID's</label>
-                    <backend_model>RedChamps\CleanMenu\Model\Config\Backend\Cache</backend_model>
+                    <backend_model>RedChamps\CleanMenu\Model\Config\Backend\Modules</backend_model>
                     <config_path>clean_admin_menu/developer/allowed_menu_ids</config_path>
                     <comment>Enter each menu ID in next line. We will move the specified menu id's under "Extensions" menu.</comment>
                 </field>
