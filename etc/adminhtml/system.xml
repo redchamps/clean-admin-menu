@@ -48,7 +48,7 @@
                     <comment>We will change the behavior of the allowed tab list.</comment>
                 </field>
                 <field id="promo" type="select" translate="label comment" showInDefault="1" showInWebsite="0" showInStore="0" sortOrder="50" canRestore="1">
-                    <label>Disable Powered By Links</label>
+                    <label>Powered By Links</label>
                     <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
                     <backend_model>RedChamps\CleanMenu\Model\Config\Backend\Modules</backend_model>
                     <config_path>clean_admin_menu/settings/promo</config_path>
