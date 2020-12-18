@@ -13,7 +13,7 @@
         <tab id="redchamps" translate="label" sortOrder="999999">
             <label>RedChamps</label>
         </tab>
-        <section id="clean_admin_menu" translate="label" showInDefault="1" showInWebsite="0" showInStore="0" sortOrder="1">
+        <section id="clean_admin_menu" translate="label" showInDefault="1" showInWebsite="0" showInStore="0" sortOrder="0">
             <tab>redchamps</tab>
             <label>Clean Admin Menu</label>
             <resource>RedChamps_CleanMenu::settings</resource>
@@ -46,6 +46,12 @@
                     <source_model>RedChamps\CleanMenu\Model\Config\Source\Rules</source_model>
                     <config_path>clean_admin_menu/settings/rule_tabs</config_path>
                     <comment>We will change the behavior of the allowed tab list.</comment>
+                </field>
+                <field id="promo" type="select" translate="label comment" showInDefault="1" showInWebsite="0" showInStore="0" sortOrder="50" canRestore="1">
+                    <label>Disable Powered By Links</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                    <backend_model>RedChamps\CleanMenu\Model\Config\Backend\Modules</backend_model>
+                    <config_path>clean_admin_menu/settings/promo</config_path>
                 </field>
             </group>
             <group id="marketplace" translate="label" showInDefault="1" showInWebsite="0" showInStore="0" sortOrder="20">

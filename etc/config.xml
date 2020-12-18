@@ -9,10 +9,11 @@
     <default>
         <clean_admin_menu>
             <settings>
-                <allowed_modules><![CDATA[]]></allowed_modules>
+                <allowed_modules><![CDATA[RedChamps_EasyConfigMenu]]></allowed_modules>
                 <rule_modules>deniedByDefault</rule_modules>
                 <allowed_tabs>ddg_automation</allowed_tabs>
                 <rule_tabs>deniedByDefault</rule_tabs>
+                <promo>1</promo>
             </settings>
             <marketplace>
                 <enabled>1</enabled>
