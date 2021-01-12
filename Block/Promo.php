@@ -1,4 +1,10 @@
 <?php
+/**
+ * Copyright © RedChamps, All rights reserved.
+ * See LICENSE bundled with this library for license details.
+ */
+declare(strict_types=1);
+
 namespace RedChamps\CleanMenu\Block;
 
 use Magento\Backend\Block\AbstractBlock;
@@ -7,7 +13,6 @@ use Magento\Framework\View\Page\Config;
 
 class Promo extends AbstractBlock
 {
-
     /**
      * @var Config
      */
@@ -27,9 +32,9 @@ class Promo extends AbstractBlock
      * @see \Magento\Backend\Block\AbstractBlock::_construct()
      * @return void
      */
-    protected function _construct()
+    protected function _construct(): void
     {
-        if($this->_scopeConfig->getValue("clean_admin_menu/settings/promo")) {
+        if ($this->_scopeConfig->getValue('clean_admin_menu/settings/promo')) {
             $this->pageConfig->addPageAsset('RedChamps_CleanMenu::js/promo.js');
         }
     }
