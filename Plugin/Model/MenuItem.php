@@ -16,7 +16,7 @@ final class MenuItem
     public function afterGetChildren(Item $subject, $result)
     {
         if ($subject->getId() === Config::MENU_ID) {
-            $firstItem = reset($result);
+            $firstItem = $result->getFirstAvailable();
             if ($firstItem && $firstItem->getId()) {
                 $firstItem->setTooltip(Config::MENU_ID);
             }

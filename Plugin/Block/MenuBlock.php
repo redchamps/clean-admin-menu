@@ -22,7 +22,7 @@ final class MenuBlock
         int $limit = 0,
         $colBrakes = []
     ): array {
-        $firstItem = reset($menu);
+        $firstItem = $menu->getFirstAvailable();
         if ($level === 1 && $firstItem && $firstItem->toArray()['toolTip'] === Config::MENU_ID) {
             $level = 0;
             $limit = self::MAX_ITEMS;
