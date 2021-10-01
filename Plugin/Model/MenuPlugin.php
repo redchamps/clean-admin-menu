@@ -1,4 +1,10 @@
 <?php
+/**
+ * Copyright © RedChamps, All rights reserved.
+ * See LICENSE bundled with this library for license details.
+ */
+declare(strict_types=1);
+
 namespace RedChamps\CleanMenu\Plugin\Model;
 
 use Magento\Backend\Model\Menu;
@@ -27,14 +33,18 @@ class MenuPlugin
         $this->isAllowedMenuId = $isAllowedMenuId;
     }
 
-    public function beforeAdd(Menu $subject, Item $item, $parentId = null, $index = null)
+    public function beforeAdd(Menu $subject, Item $item, $parentId = null, $index = null): array
     {
         if ($parentId === null &&
-            ($this->isAllowedMenuId->isAllowed($item->getId()) || !$this->isAllowedModule->isAllowed($item->toArray()["module"])) &&
-            $subject->get(Config::MENU_ID)
+            $subject->get(Config::MENU_ID) &&
+            (
+                $this->isAllowedMenuId->isAllowed($item->getId()) ||
+                !$this->isAllowedModule->isAllowed($item->toArray()['module'])
+            )
         ) {
             $parentId = Config::MENU_ID;
         }
+
         return [$item, $parentId, $index];
     }
 }

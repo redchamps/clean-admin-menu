@@ -3,14 +3,21 @@
  * Copyright © RedChamps, All rights reserved.
  * See LICENSE bundled with this library for license details.
  */
+declare(strict_types=1);
+
 use Magento\Config\Block\System\Config\Tabs;
 use Magento\Config\Model\Config\Structure\Element\Section;
 use Magento\Config\Model\Config\Structure\Element\Tab;
+use Magento\Framework\Escaper;
 
 /** @var $block Tabs */
+/** @var $escaper Escaper */
+
+// ToDo: Used for backward compatibility with Magento < 2.4
+$escaper = $escaper ?? $block;
 ?>
 <?php if ($block->getTabs()) : ?>
-    <div id="<?= $block->escapeHtmlAttr($block->getId()) ?>" class="config-nav">
+    <div id="<?= $escaper->escapeHtmlAttr($block->getId()) ?>" class="config-nav">
         <?php
         /** @var $_tab Tab */
         foreach ($block->getTabs() as $_tab) :
@@ -22,15 +29,15 @@ use Magento\Config\Model\Config\Structure\Element\Tab;
             endforeach; ?>
             <div class="config-nav-block admin__page-nav _collapsed
                 <?php if ($_tab->getClass()) : ?>
-                    <?= $block->escapeHtmlAttr($_tab->getClass()) ?>
+                    <?= $escaper->escapeHtmlAttr($_tab->getClass()) ?>
                 <?php endif ?>"
-                 data-mage-init='{"collapsible":{"active": "<?= $block->escapeHtmlAttr($activeCollapsible) ?>",
+                 data-mage-init='{"collapsible":{"active": "<?= $escaper->escapeHtmlAttr($activeCollapsible) ?>",
                  "openedState": "_show",
                  "closedState": "_hide",
                  "collapsible": true,
                  "animate": 200}}'>
                 <div class="admin__page-nav-title title _collapsible" data-role="title">
-                    <strong><?= $block->escapeHtml($_tab->getLabel()) ?></strong>
+                    <strong><?= $escaper->escapeHtml($_tab->getLabel()) ?></strong>
                 </div>
                 <ul class="admin__page-nav-items items" data-role="content">
                     <?php $_iterator = 1; $origTabs = []; ?>
@@ -45,20 +52,20 @@ use Magento\Config\Model\Config\Structure\Element\Tab;
                                 <?php endif ?>
                                 <?php $origTabs[$_section->getAttribute('tab_original')['id']] = true; ?>
                                 <div data-role="ext-tabs" class="<?php if ($_tab->getClass()) : ?>
-                                        <?= $block->escapeHtmlAttr($_tab->getClass()) ?>
+                                        <?= $escaper->escapeHtmlAttr($_tab->getClass()) ?>
                                         <?php endif ?> rc-section-title _collapsed _hide">
                                         <div class="admin__page-nav-title title _collapsible" data-role="title">
-                                            <strong><?= $tabOriginal['label'] ? $tabOriginal['label'] : $tabOriginal['id'] ?></strong>
+                                            <strong><?= $tabOriginal['label'] ?: $tabOriginal['id'] ?></strong>
                                         </div>
                                         <ul class="admin__page-nav-items items" data-role="content">
                             <?php endif ?>
                                         <li class="admin__page-nav-item item
-                                            <?= $block->escapeHtml($_section->getClass()) ?>
+                                            <?= $escaper->escapeHtml($_section->getClass()) ?>
                                             <?php if ($block->isSectionActive($_section)) : ?> _active<?php endif ?>
                                             <?= $_tab->getChildren()->isLast($_section) ? ' _last' : '' ?>">
-                                            <a href="<?= $block->escapeUrl($block->getSectionUrl($_section)) ?>"
+                                            <a href="<?= $escaper->escapeUrl($block->getSectionUrl($_section)) ?>"
                                                 class="admin__page-nav-link item-nav">
-                                                <span><?= $block->escapeHtml($_section->getLabel()) ?></span>
+                                                <span><?= $escaper->escapeHtml($_section->getLabel()) ?></span>
                                             </a>
                                         </li>
                                         <?php $_iterator++; ?>
@@ -68,12 +75,12 @@ use Magento\Config\Model\Config\Structure\Element\Tab;
                             <?php endif ?>
                         <?php else:?>
                             <li class="admin__page-nav-item item
-                                <?= $block->escapeHtml($_section->getClass()) ?>
+                                <?= $escaper->escapeHtml($_section->getClass()) ?>
                                 <?php if ($block->isSectionActive($_section)) : ?> _active<?php endif ?>
                                 <?= $_tab->getChildren()->isLast($_section) ? ' _last' : '' ?>">
-                                <a href="<?= $block->escapeUrl($block->getSectionUrl($_section)) ?>"
+                                <a href="<?= $escaper->escapeUrl($block->getSectionUrl($_section)) ?>"
                                    class="admin__page-nav-link item-nav">
-                                    <span><?= $block->escapeHtml($_section->getLabel()) ?></span>
+                                    <span><?= $escaper->escapeHtml($_section->getLabel()) ?></span>
                                 </a>
                             </li>
                             <?php $_iterator++; ?>
