@@ -9,10 +9,17 @@ namespace RedChamps\CleanMenu\Plugin\Model;
 
 use Magento\Backend\Model\Menu\Item;
 use RedChamps\CleanMenu\Model\Config;
-use function reset;
+use RedChamps\CleanMenu\Model\IsAllowedMenuChildren;
 
 final class MenuItem
 {
+    private $isAllowedMenuChildren;
+
+    public function __construct(IsAllowedMenuChildren $isAllowedMenuChildren)
+    {
+        $this->isAllowedMenuChildren = $isAllowedMenuChildren;
+    }
+
     public function afterGetChildren(Item $subject, $result)
     {
         if ($subject->getId() === Config::MENU_ID) {
@@ -28,7 +35,9 @@ final class MenuItem
     public function afterIsAllowed(Item $subject, bool $result): bool
     {
         $menuItemData = $subject->toArray();
-
-        return (($menuItemData["resource"] ?? '') === Config::MENU_ID) || $result;
+        if (($menuItemData["resource"] ?? '') === Config::MENU_ID) {
+            return $this->isAllowedMenuChildren->execute($subject);
+        }
+        return $result;
     }
 }

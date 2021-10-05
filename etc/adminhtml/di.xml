@@ -12,9 +12,6 @@
     <type name="Magento\Backend\Block\Menu">
         <plugin sortOrder="1" name="redChampsCleanMenuMenu" type="RedChamps\CleanMenu\Plugin\Block\MenuBlock"/>
     </type>
-    <type name="Magento\Backend\Model\Menu\Builder">
-        <plugin sortOrder="1" name="redChampsCleanMenuBuilder" type="RedChamps\CleanMenu\Plugin\Model\MenuBuilder"/>
-    </type>
     <type name="Magento\Backend\Model\Menu\Item">
         <plugin sortOrder="1" name="redChampsCleanMenuItem" type="RedChamps\CleanMenu\Plugin\Model\MenuItem"/>
     </type>
