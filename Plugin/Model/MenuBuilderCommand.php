@@ -37,7 +37,7 @@ final class MenuBuilderCommand
         if ((isset($result['id']) && $this->isAllowedMenuId->isAllowed($result['id'])) ||
             (
                 isset($result['module']) &&
-                !isset($result['parent']) &&
+                !($result['parent'] ?? '') &&
                 !$this->isAllowedModule->isAllowed($result['module'])
             )
         ) {
