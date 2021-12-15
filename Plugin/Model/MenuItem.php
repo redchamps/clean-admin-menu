@@ -34,10 +34,8 @@ final class MenuItem
 
     public function afterIsAllowed(Item $subject, bool $result): bool
     {
-        $menuItemData = $subject->toArray();
-        if (($menuItemData["resource"] ?? '') === Config::MENU_ID) {
-            return $this->isAllowedMenuChildren->execute($subject);
-        }
-        return $result;
+        return ($subject->toArray()['resource'] ?? '') === Config::MENU_ID
+            ? $this->isAllowedMenuChildren->execute($subject)
+            : $result;
     }
 }
