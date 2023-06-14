@@ -51,7 +51,7 @@ class Data extends StructureData
             }
             ksort($thirdPartyTabs);
             foreach ($thirdPartyTabs as $tabName => $sections) {
-                usort($sections, [$this, 'sortSections']);
+                uasort($sections, [$this, 'sortSections']);
                 $thirdPartyTabs[$tabName] = $sections;
             }
             $data['sections'] = array_merge($data['sections'], array_merge(...array_values($thirdPartyTabs)));
