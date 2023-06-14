@@ -49,9 +49,20 @@ class Data extends StructureData
                     unset($data['sections'][$sectionId]);
                 }
             }
+            ksort($thirdPartyTabs);
+            foreach ($thirdPartyTabs as $tabName => $sections) {
+                usort($sections, [$this, 'sortSections']);
+                $thirdPartyTabs[$tabName] = $sections;
+            }
             $data['sections'] = array_merge($data['sections'], array_merge(...array_values($thirdPartyTabs)));
         }
 
         return $data;
+    }
+
+    protected function sortSections($a, $b)
+    {
+        if ((!isset($a['label']) || !isset($b['label'])) || ($a['label'] == $b['label'])) return 0;
+        return ($a['label'] < $b['label']) ? -1 : 1;
     }
 }
