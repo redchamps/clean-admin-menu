@@ -50,19 +50,27 @@ class Data extends StructureData
                 }
             }
             ksort($thirdPartyTabs);
-            foreach ($thirdPartyTabs as $tabName => $sections) {
-                uasort($sections, [$this, 'sortSections']);
-                $thirdPartyTabs[$tabName] = $sections;
-            }
-            $data['sections'] = array_merge($data['sections'], array_merge(...array_values($thirdPartyTabs)));
+
+            $data['sections'] = array_merge($data['sections'], array_merge(...array_values($this->sortByLabel($thirdPartyTabs))));
         }
 
         return $data;
     }
 
-    protected function sortSections($a, $b)
+    private function sortByLabel($array): array
     {
-        if ((!isset($a['label']) || !isset($b['label'])) || ($a['label'] == $b['label'])) return 0;
-        return ($a['label'] < $b['label']) ? -1 : 1;
+        return array_map(
+            static function (array $sections): array {
+                uasort(
+                    $sections,
+                    static function (array $a, array $b): int {
+                        return ($a['label'] ?? '') <=> ($b['label'] ?? '');
+                    }
+                );
+
+                return $sections;
+            },
+            $array
+        );
     }
 }
