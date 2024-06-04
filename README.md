@@ -6,9 +6,23 @@
 [![Packagist](https://img.shields.io/packagist/dm/redchamps/module-clean-admin-menu.svg?style=flat-square)](https://packagist.org/packages/redchamps/module-clean-admin-menu/stats)
 
 It will merge all 3rd party extension's menu items in backend's primary menu to a common menu item named "**Extensions**". It will also merge different 3rd party extension tabs under path 
->Store > Configuration 
+> Stores > Configuration 
 
 to a single tab named "**Extensions**" and place it after native Magento tabs.
+
+Did you knwo this module makes the "Extensions" level entry true? As explained in the Magento official documentation, the best practice is to live feature-level extensions under a single "extensions" level: [Admin Best Practices](https://developer.adobe.com/commerce/php/best-practices/admin/placement-and-design/#feature-extensions).
+
+>
+> Feature Extensions
+>
+> These are extensions which provide additional functionality that do not already exist as a feature. These extensions usually demand an additional primary navigation item.
+> 
+> Placement:  
+> 
+> There will be a new, dedicated section designed for such exclusive extensions. When feature-level extensions are installed, those extensions will live under this section. The exact final name of this new section has not been decided (we welcome your feedback), but in the image below it is named Extensions.
+>
+> ![Feature Placement](https://developer.adobe.com/commerce/php/static/69d88b5949fc0871abfe8f55a5a55a17/78631/feature-placement.webp)
+>
 
 ## Screenshots
 ### Main Navigation
