@@ -10,7 +10,7 @@ It will merge all 3rd party extension's menu items in backend's primary menu to 
 
 to a single tab named "**Extensions**" and place it after native Magento tabs.
 
-Did you knwo this module makes the "Extensions" level entry true? As explained in the Magento official documentation, the best practice is to live feature-level extensions under a single "extensions" level: [Admin Best Practices](https://developer.adobe.com/commerce/php/best-practices/admin/placement-and-design/#feature-extensions).
+Did you know this module makes the "Extensions" level entry true? As explained in the Magento official documentation, the best practice is to live feature-level extensions under a single "extensions" level: [Admin Best Practices](https://developer.adobe.com/commerce/php/best-practices/admin/placement-and-design/#feature-extensions).
 
 >
 > Feature Extensions
