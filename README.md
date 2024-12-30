@@ -5,9 +5,7 @@
 [![Packagist](https://img.shields.io/packagist/dt/redchamps/module-clean-admin-menu.svg?style=flat-square)](https://packagist.org/packages/redchamps/module-clean-admin-menu/stats)
 [![Packagist](https://img.shields.io/packagist/dm/redchamps/module-clean-admin-menu.svg?style=flat-square)](https://packagist.org/packages/redchamps/module-clean-admin-menu/stats)
 
-### Compatibility check
-
-Compatible with latest Magento version 2.4.7-p3
+**Compatibility check** Compatible with latest Magento version 2.4.7-p3
 
 It will merge all 3rd party extension's menu items in backend's primary menu to a common menu item named "**Extensions**". It will also merge different 3rd party extension tabs under path 
 > Stores > Configuration 
