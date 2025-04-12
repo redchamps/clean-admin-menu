@@ -29,9 +29,9 @@ class Cache extends Value
         ScopeConfigInterface $config,
         TypeListInterface $cacheTypeList,
         Manager $cacheManager,
-        AbstractResource $resource = null,
-        AbstractDb $resourceCollection = null,
-        array $data = []
+        AbstractResource|null $resource = null,
+        AbstractDb|null $resourceCollection = null,
+        array|null $data = []
     ) {
         $this->cacheManager = $cacheManager;
         parent::__construct($context, $registry, $config, $cacheTypeList, $resource, $resourceCollection, $data);
