@@ -8,19 +8,6 @@
         .submenu-title {
             margin-bottom: 4px;
         }
-        .powered-by {
-            color: white;
-            margin-left: 3rem;
-            font-size: 11px;
-            margin-bottom: 3rem;
-            a {
-                color: rgb(237, 51, 54)!important;
-                font-weight: bold!important;
-                &:after {
-                    color: #ffffff;
-                }
-            }
-        }
         >ul[role='menubar'] {
             min-height: 720px;
         }
@@ -44,10 +31,10 @@
                 font-weight: 600;
                 font-size: 1.4rem;
                 text-align: left;
-                color: #fff;
+                color:  @submenu-link__color;
                 text-transform: none;
                 &:hover {
-                    background-color: #524d49;
+                    background-color: @submenu-link__focus__background-color;
                 }
                 span {
                     display: block!important;
@@ -116,7 +103,6 @@
 }
 .rc-section-title {
     strong {
-        color: #ec5102;
         padding: 0 0 8px 8px !important;
     }
 }
@@ -128,20 +114,6 @@
 }
 #system_config_tabs .rc-section-title ._collapsible::after {
     content: '\e628';
-}
-#system_config_tabs .rc-section-title .admin__page-nav-title.title._collapsible {
-    background: #fff;
-}
-.rc-cam-tab .powered-by {
-    padding: 10px;
-    span {
-        font-size: 11px;
-        margin-left: 10px;
-        a {
-            color: #ED3336;
-            font-weight: bold;
-        }
-    }
 }
 //extension specific rules
 #nav {
